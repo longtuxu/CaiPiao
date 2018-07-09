@@ -8,8 +8,11 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +23,10 @@ public class MainActivity extends Activity implements OnClickListener
 {
 
     private TextView s, d, q, p, w, ss, dd, qq, pp, ww;
-    private ImageButton icon;
+    private ImageButton icon,icon2;
+    private EditText editText;
+    private LinearLayout linearLayout;
+    private TextView get;
     private ClipboardManager cm;
     private String copyContent;
     private List<String> list;
@@ -33,7 +39,7 @@ public class MainActivity extends Activity implements OnClickListener
         setContentView(R.layout.activity_main);
         hideActionBar();
         initUI();
-        setinitSsqList();
+        setInitSsqList();
     }
 
     private void hideActionBar()
@@ -47,11 +53,11 @@ public class MainActivity extends Activity implements OnClickListener
 
     private void initUI()
     {
-        s = (TextView) findViewById(R.id.s);
-        d = (TextView) findViewById(R.id.d);
-        q = (TextView) findViewById(R.id.q);
-        p = (TextView) findViewById(R.id.p);
-        w = (TextView) findViewById(R.id.w);
+        s = findViewById(R.id.s);
+        d = findViewById(R.id.d);
+        q = findViewById(R.id.q);
+        p = findViewById(R.id.p);
+        w = findViewById(R.id.w);
 
         s.setOnClickListener(this);
         d.setOnClickListener(this);
@@ -59,14 +65,21 @@ public class MainActivity extends Activity implements OnClickListener
         p.setOnClickListener(this);
         w.setOnClickListener(this);
 
-        ss = (TextView) findViewById(R.id.ss);
-        dd = (TextView) findViewById(R.id.dd);
-        qq = (TextView) findViewById(R.id.qq);
-        pp = (TextView) findViewById(R.id.pp);
-        ww = (TextView) findViewById(R.id.ww);
+        ss = findViewById(R.id.ss);
+        dd = findViewById(R.id.dd);
+        qq = findViewById(R.id.qq);
+        pp = findViewById(R.id.pp);
+        ww = findViewById(R.id.ww);
 
-        icon = (ImageButton) findViewById(R.id.icon);
+        icon = findViewById(R.id.icon);
         icon.setOnClickListener(this);
+        icon2 = findViewById(R.id.icon2);
+        icon2.setOnClickListener(this);
+
+        linearLayout = findViewById(R.id.editLinear);
+        editText = findViewById(R.id.editext);
+        get = findViewById(R.id.get);
+        get.setOnClickListener(this);
     }
 
     @Override
@@ -90,11 +103,80 @@ public class MainActivity extends Activity implements OnClickListener
         } else if (icon == v)
         {
             RadomSelect(6);
+        }else if (icon2 == v)
+        {
+            linearLayout.setVisibility(View.VISIBLE);
+        }else if (get == v)
+        {
+            inputDataToRadom();
+            copySelect();
         }
         copySelect();
     }
 
-    private void setinitSsqList()
+    private void inputDataToRadom()
+    {
+        String ediStr = editText.getText().toString();
+        if (ediStr.contains(" "))
+        {
+            ediStr.replaceAll(" ", "");
+        }
+        if (ediStr.contains("，"))
+        {
+            ediStr.replaceAll("，", ",");
+        }
+        if (ediStr.contains("'"))
+        {
+            ediStr.replaceAll("'", ",");
+        }
+        if (ediStr.contains(",,"))
+        {
+            ediStr.replaceAll(",,", ",");
+        }
+
+        String [] oneStr = ediStr.split(",");
+
+        List<String> list = new ArrayList<String>();
+
+        for (int i = 0; i <oneStr.length ; i++)
+        {
+            if(!list.contains(oneStr[i]))
+            {
+                list.add(oneStr[i]);
+            }
+        }
+
+        //红球
+        List<String> list2 = new ArrayList<String>();
+        for (int i = 0; i < 6; i++)
+        {
+            random = new Random();
+            int num = random.nextInt(list.size());
+            String data = list.get(num);
+            if(!list2.contains(data))
+            {
+                list2.add(data);
+            } else
+            {
+                i--;
+            }
+        }
+
+        //蓝球
+        random = new Random();
+        List<Integer> list3 = new ArrayList<Integer>();
+        for (int i = 0; i < 17; i++)
+        {
+            list3.add(i);
+        }
+        list3.remove(0);
+        int blue = list3.get(random.nextInt(list3.size()));
+
+        ss.setText(list2.toString() + " + " + blue);
+        copyContent = list2.toString() + " + " + blue;
+    }
+
+    private void setInitSsqList()
     {
         list = new ArrayList<>();
         for (int i = 0; i < 30; i++)
