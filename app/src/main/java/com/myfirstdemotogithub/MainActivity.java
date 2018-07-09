@@ -20,11 +20,11 @@ public class MainActivity extends Activity implements OnClickListener
 {
 
     private TextView s, d, q, p, w, ss, dd, qq, pp, ww;
-
     private ImageButton icon;
-
     private ClipboardManager cm;
     private String copyContent;
+    private List<String> list;
+    Random random = new Random();
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -33,6 +33,7 @@ public class MainActivity extends Activity implements OnClickListener
         setContentView(R.layout.activity_main);
         hideActionBar();
         initUI();
+        setinitSsqList();
     }
 
     private void hideActionBar()
@@ -93,10 +94,36 @@ public class MainActivity extends Activity implements OnClickListener
         copySelect();
     }
 
+    private void setinitSsqList()
+    {
+        list = new ArrayList<>();
+        for (int i = 0; i < 30; i++)
+        {
+            int data = random.nextInt(34);
+            String dataStr = null;
+            if (data < 10)
+            {
+                dataStr = "0" + String.valueOf(data);
+            } else
+            {
+                dataStr = String.valueOf(data);
+            }
+            if (!list.contains(dataStr) && !"00".equals(dataStr))
+            {
+                if (list.size() < 10)
+                {
+                    list.add(dataStr);
+                    i++;
+                }
+            }
+        }
+    }
+
+
     @SuppressLint("NewApi")
     private void RadomSelect(int type)
     {
-        Random rdm = new Random();
+        random = new Random();
         List<String> ssqRedlist;
         int blue = 0;
         // 双色球
@@ -106,7 +133,7 @@ public class MainActivity extends Activity implements OnClickListener
             ssqRedlist = new ArrayList<>();
             for (int i = 0; i < 20; i++)
             {
-                int num = rdm.nextInt(34);
+                int num = random.nextInt(34);
 
                 if (!ssqRedlist.contains(String.valueOf(num)) && !ssqRedlist.contains("0" + num) && num != 0)
                 {
@@ -131,11 +158,11 @@ public class MainActivity extends Activity implements OnClickListener
                 blueList.add(i);
             }
 
-            blue = rdm.nextInt(17);
+            blue = random.nextInt(17);
             if (blue == 0)
             {
                 blueList.remove(0);
-                blue = rdm.nextInt(blueList.size());
+                blue = random.nextInt(blueList.size());
             }
             copyContent = ssqRedlist.toString() + " + " + blue;
             ss.setText(copyContent);
@@ -159,17 +186,17 @@ public class MainActivity extends Activity implements OnClickListener
             BlueList.add("12");
             String blue1 = null, blue2 = null;
 
-            int s = rdm.nextInt(BlueList.size());
+            int s = random.nextInt(BlueList.size());
             blue1 = BlueList.get(s);
             BlueList.remove(blue1);
 
-            int s2 = rdm.nextInt(BlueList.size());
+            int s2 = random.nextInt(BlueList.size());
             blue2 = BlueList.get(s2);
 
             List<String> list = new ArrayList<>();
             for (int i = 0; i < 20; i++)
             {
-                int num = rdm.nextInt(36);
+                int num = random.nextInt(36);
                 if (!list.contains(String.valueOf(num)) && !list.contains("0" + num) && num != 0)
                 {
                     if (list.size() < 5)
@@ -195,7 +222,7 @@ public class MainActivity extends Activity implements OnClickListener
             List<String> list = new ArrayList<>();
             for (int i = 0; i < 7; i++)
             {
-                int num = rdm.nextInt(10);
+                int num = random.nextInt(10);
                 list.add(String.valueOf(num));
             }
             copyContent = list.toString();
@@ -208,7 +235,7 @@ public class MainActivity extends Activity implements OnClickListener
             List<String> list = new ArrayList<>();
             for (int i = 0; i < 5; i++)
             {
-                int num = rdm.nextInt(10);
+                int num = random.nextInt(10);
                 list.add(String.valueOf(num));
             }
             copyContent = list.toString();
@@ -222,7 +249,7 @@ public class MainActivity extends Activity implements OnClickListener
 
             for (int i = 0; i < 20; i++)
             {
-                int num = rdm.nextInt(12);
+                int num = random.nextInt(12);
                 if (!list.contains(String.valueOf(num)) && !list.contains("0" + num) && num != 0)
                 {
                     if (list.size() < 5)
@@ -235,31 +262,10 @@ public class MainActivity extends Activity implements OnClickListener
             ww.setText(copyContent);
         }
 
+        //点双色球图标
         if (type == 6)
         {
-            List<String> list = new ArrayList<>();
-            for (int i = 0; i < 30; i++)
-            {
-                int data = rdm.nextInt(34);
-                String dataStr = null;
-                if (data < 10)
-                {
-                    dataStr = "0" + String.valueOf(data);
-                } else
-                {
-                    dataStr = String.valueOf(data);
-                }
-                if (!list.contains(dataStr) && !"00".equals(dataStr))
-                {
-                    if (list.size() < 10)
-                    {
-                        list.add(dataStr);
-                        i++;
-                    }
-                }
-            }
-
-            Random random = new Random();
+            random = new Random();
             List<String> list1 = new ArrayList<String>();
             for (int i = 0; i < 6; i++)
             {
@@ -281,11 +287,11 @@ public class MainActivity extends Activity implements OnClickListener
                 blueList.add(i);
             }
 
-            blue = rdm.nextInt(17);
+            blue = random.nextInt(17);
             if (blue == 0)
             {
                 blueList.remove(0);
-                blue = rdm.nextInt(blueList.size());
+                blue = random.nextInt(blueList.size());
             }
 
             copyContent = list1.toString() + " + " + blue;
