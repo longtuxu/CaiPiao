@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+//练习
 public class MainActivity extends Activity implements OnClickListener
 {
 
