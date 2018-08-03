@@ -192,7 +192,7 @@ public class MainActivity extends Activity implements OnClickListener
             }
             if (!list.contains(dataStr) && !"00".equals(dataStr))
             {
-                if (list.size() < 10)
+                if (list.size() < 11)
                 {
                     list.add(dataStr);
                     i++;
