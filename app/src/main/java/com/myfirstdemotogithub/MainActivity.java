@@ -12,7 +12,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,8 +21,8 @@ import java.util.Random;
 public class MainActivity extends Activity implements OnClickListener
 {
 
-    private TextView s, d, q, p, w, ss, dd, qq, pp, ww;
-    private ImageButton icon,icon2;
+    private TextView s, d, q, p, ss, dd, qq, pp;
+    private ImageButton icon, icon2;
     private EditText editText;
     private LinearLayout linearLayout;
     private TextView get;
@@ -57,19 +56,16 @@ public class MainActivity extends Activity implements OnClickListener
         d = findViewById(R.id.d);
         q = findViewById(R.id.q);
         p = findViewById(R.id.p);
-        w = findViewById(R.id.w);
 
         s.setOnClickListener(this);
         d.setOnClickListener(this);
         q.setOnClickListener(this);
         p.setOnClickListener(this);
-        w.setOnClickListener(this);
 
         ss = findViewById(R.id.ss);
         dd = findViewById(R.id.dd);
         qq = findViewById(R.id.qq);
         pp = findViewById(R.id.pp);
-        ww = findViewById(R.id.ww);
 
         icon = findViewById(R.id.icon);
         icon.setOnClickListener(this);
@@ -87,26 +83,23 @@ public class MainActivity extends Activity implements OnClickListener
     {
         if (s == v)
         {
-            RadomSelect(1);
+            ss.setText(new ShuangSeQiu().setShuangSeQiuText());
         } else if (d == v)
         {
-            RadomSelect(2);
+            dd.setText(new DaLeTou().setDaletouText());
         } else if (q == v)
         {
-            RadomSelect(3);
+            qq.setText(new QiXingCai().setBallText());
         } else if (p == v)
         {
-            RadomSelect(4);
-        } else if (w == v)
-        {
-            RadomSelect(5);
+            pp.setText(new PaiLieWu().setBallText());
         } else if (icon == v)
         {
             RadomSelect(6);
-        }else if (icon2 == v)
+        } else if (icon2 == v)
         {
             linearLayout.setVisibility(View.VISIBLE);
-        }else if (get == v)
+        } else if (get == v)
         {
             inputDataToRadom();
             copySelect();
@@ -134,13 +127,13 @@ public class MainActivity extends Activity implements OnClickListener
             ediStr.replaceAll(",,", ",");
         }
 
-        String [] oneStr = ediStr.split(",");
+        String[] oneStr = ediStr.split(",");
 
         List<String> list = new ArrayList<String>();
 
-        for (int i = 0; i <oneStr.length ; i++)
+        for (int i = 0; i < oneStr.length; i++)
         {
-            if(!list.contains(oneStr[i]))
+            if (!list.contains(oneStr[i]))
             {
                 list.add(oneStr[i]);
             }
@@ -153,7 +146,7 @@ public class MainActivity extends Activity implements OnClickListener
             random = new Random();
             int num = random.nextInt(list.size());
             String data = list.get(num);
-            if(!list2.contains(data))
+            if (!list2.contains(data))
             {
                 list2.add(data);
             } else
@@ -208,141 +201,6 @@ public class MainActivity extends Activity implements OnClickListener
         random = new Random();
         List<String> ssqRedlist;
         int blue = 0;
-        // 双色球
-        if (type == 1)
-        {
-            //红球
-            ssqRedlist = new ArrayList<>();
-            for (int i = 0; i < 20; i++)
-            {
-                int num = random.nextInt(34);
-
-                if (!ssqRedlist.contains(String.valueOf(num)) && !ssqRedlist.contains("0" + num) && num != 0)
-                {
-                    if (ssqRedlist.size() < 6)
-                    {
-                        if (num < 10)
-                        {
-                            String setNum = "0" + num;
-                            ssqRedlist.add(setNum);
-                        } else
-                        {
-                            ssqRedlist.add(String.valueOf(num));
-                        }
-                    }
-                }
-            }
-
-            //蓝球
-            List<Integer> blueList = new ArrayList<>();
-            for (int i = 0; i < 17; i++)
-            {
-                blueList.add(i);
-            }
-
-            blue = random.nextInt(17);
-            if (blue == 0)
-            {
-                blueList.remove(0);
-                blue = random.nextInt(blueList.size());
-            }
-            copyContent = ssqRedlist.toString() + " + " + blue;
-            ss.setText(copyContent);
-        }
-
-        // 大乐透
-        if (type == 2)
-        {
-            List<String> BlueList = new ArrayList<>();
-            BlueList.add("01");
-            BlueList.add("02");
-            BlueList.add("03");
-            BlueList.add("04");
-            BlueList.add("05");
-            BlueList.add("06");
-            BlueList.add("07");
-            BlueList.add("08");
-            BlueList.add("09");
-            BlueList.add("10");
-            BlueList.add("11");
-            BlueList.add("12");
-            String blue1 = null, blue2 = null;
-
-            int s = random.nextInt(BlueList.size());
-            blue1 = BlueList.get(s);
-            BlueList.remove(blue1);
-
-            int s2 = random.nextInt(BlueList.size());
-            blue2 = BlueList.get(s2);
-
-            List<String> list = new ArrayList<>();
-            for (int i = 0; i < 20; i++)
-            {
-                int num = random.nextInt(36);
-                if (!list.contains(String.valueOf(num)) && !list.contains("0" + num) && num != 0)
-                {
-                    if (list.size() < 5)
-                    {
-                        if (num < 10)
-                        {
-                            String setNum = "0" + num;
-                            list.add(setNum);
-                        } else
-                        {
-                            list.add(String.valueOf(num));
-                        }
-                    }
-                }
-            }
-            copyContent = list.toString() + " + " + blue1 + " " + blue2;
-            dd.setText(copyContent);
-        }
-
-        // 七星彩
-        if (type == 3)
-        {
-            List<String> list = new ArrayList<>();
-            for (int i = 0; i < 7; i++)
-            {
-                int num = random.nextInt(10);
-                list.add(String.valueOf(num));
-            }
-            copyContent = list.toString();
-            qq.setText(copyContent);
-        }
-
-        // 排五
-        if (type == 4)
-        {
-            List<String> list = new ArrayList<>();
-            for (int i = 0; i < 5; i++)
-            {
-                int num = random.nextInt(10);
-                list.add(String.valueOf(num));
-            }
-            copyContent = list.toString();
-            pp.setText(copyContent);
-        }
-
-        // 任五
-        if (type == 5)
-        {
-            List<String> list = new ArrayList<>();
-
-            for (int i = 0; i < 20; i++)
-            {
-                int num = random.nextInt(12);
-                if (!list.contains(String.valueOf(num)) && !list.contains("0" + num) && num != 0)
-                {
-                    if (list.size() < 5)
-                    {
-                        list.add(String.valueOf(num));
-                    }
-                }
-            }
-            copyContent = list.toString();
-            ww.setText(copyContent);
-        }
 
         //点双色球图标
         if (type == 6)
