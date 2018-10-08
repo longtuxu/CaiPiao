@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * 七星彩随机
+ */
 public class QiXingCai
 {
     Random random = new Random();

@@ -84,19 +84,19 @@ public class MainActivity extends Activity implements OnClickListener
         if (s == v)
         {
             ss.setText(new ShuangSeQiu().setShuangSeQiuText());
-            copyContent = ss.getText().toString();
+            copyContent = ss.getText().toString() + "\n";
         } else if (d == v)
         {
             dd.setText(new DaLeTou().setDaletouText());
-            copyContent = dd.getText().toString();
+            copyContent = "大乐透\n" + dd.getText().toString() + "\n";
         } else if (q == v)
         {
             qq.setText(new QiXingCai().setBallText());
-            copyContent = qq.getText().toString();
+            copyContent = "七星彩\n" + qq.getText().toString() + "\n";
         } else if (p == v)
         {
             pp.setText(new PaiLieWu().setBallText());
-            copyContent = pp.getText().toString();
+            copyContent = "排列五\n" + pp.getText().toString() + "\n";
         } else if (icon == v)
         {
             RadomSelect(6);

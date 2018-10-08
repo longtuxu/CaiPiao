@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * 排列五随机
+ */
 public class PaiLieWu
 {
     Random random = new Random();

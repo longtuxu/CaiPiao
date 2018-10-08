@@ -3,7 +3,9 @@ package com.myfirstdemotogithub;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
+/**
+ * 双色球随机
+ */
 public class ShuangSeQiu
 {
     Random random = new Random();

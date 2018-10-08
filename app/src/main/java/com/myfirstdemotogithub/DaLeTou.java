@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * 大乐透随机
+ */
 public class DaLeTou
 {
     Random random = new Random();
