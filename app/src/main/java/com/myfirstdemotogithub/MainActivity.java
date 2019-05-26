@@ -209,39 +209,44 @@ public class MainActivity extends Activity implements OnClickListener
         //点双色球图标
         if (type == 6)
         {
-            random = new Random();
-            List<String> list1 = new ArrayList<String>();
-            for (int i = 0; i < 6; i++)
+            String result = "";
+            for (int j = 0; j <4 ; j++)
             {
-                int num = random.nextInt(list.size());
-                String data = list.get(num);
-                if (!list1.contains(data))
+                random = new Random();
+                List<String> list1 = new ArrayList<String>();
+                for (int i = 0; i < 6; i++)
                 {
-                    list1.add(data);
-                } else
-                {
-                    i--;
+                    int num = random.nextInt(list.size());
+                    String data = list.get(num);
+                    if (!list1.contains(data))
+                    {
+                        list1.add(data);
+                    } else
+                    {
+                        i--;
+                    }
                 }
+
+                //蓝球
+                List<Integer> blueList = new ArrayList<>();
+                for (int i = 0; i < 17; i++)
+                {
+                    blueList.add(i);
+                }
+
+                blue = random.nextInt(17);
+                if (blue == 0)
+                {
+                    blueList.remove(0);
+                    blue = random.nextInt(blueList.size());
+                }
+                String singleResult = list1.toString() + " + " + blue+"\n\n";
+                result = result +singleResult;
             }
 
-            //蓝球
-            List<Integer> blueList = new ArrayList<>();
-            for (int i = 0; i < 17; i++)
-            {
-                blueList.add(i);
-            }
-
-            blue = random.nextInt(17);
-            if (blue == 0)
-            {
-                blueList.remove(0);
-                blue = random.nextInt(blueList.size());
-            }
-
-            copyContent = list1.toString() + " + " + blue;
-            String textStr = list.toString() + "  \n\n" + list1.toString() + " + " + blue;
+            copyContent = result;
+            String textStr = list.toString() + "  \n\n" +  result;
             ss.setText(textStr);
-
         }
     }
 

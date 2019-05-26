@@ -64,9 +64,17 @@ public class ShuangSeQiu
 
     public String setShuangSeQiuText()
     {
-        getRedBallList();
-        getSixRedBallList();
-        getBlueBall();
-        return sixRedBallList.toString() + " + " + blueBallStr;
+        String result ="";
+        for (int i = 0; i <4 ; i++)
+        {
+            sixRedBallList.clear();
+            blueBallStr="";
+            getRedBallList();
+            getSixRedBallList();
+            getBlueBall();
+            String singleResult = sixRedBallList.toString() + " + " + blueBallStr+ "\n";
+            result =result + singleResult;
+        }
+        return result;
     }
 }
