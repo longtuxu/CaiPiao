@@ -3,6 +3,7 @@ package com.myfirstdemotogithub;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
 /**
  * 双色球随机
  */
@@ -37,8 +38,13 @@ public class ShuangSeQiu
         for (int i = 1; i <= 6; i++)
         {
             int index = random.nextInt(redBallList.size());
-            sixRedBallList.add(redBallList.get(index));
-            redBallList.remove(redBallList.get(index));
+            if (!sixRedBallList.contains(redBallList.get(index)))
+            {
+                sixRedBallList.add(redBallList.get(index));
+            } else
+            {
+                i--;
+            }
         }
         return sixRedBallList;
     }
@@ -61,19 +67,18 @@ public class ShuangSeQiu
         return blueBallStr;
     }
 
-
     public String setShuangSeQiuText()
     {
-        String result ="";
-        for (int i = 0; i <4 ; i++)
+        String result = "";
+        for (int i = 0; i < 4; i++)
         {
             sixRedBallList.clear();
-            blueBallStr="";
+            blueBallStr = "";
             getRedBallList();
             getSixRedBallList();
             getBlueBall();
-            String singleResult = sixRedBallList.toString() + " + " + blueBallStr+ "\n";
-            result =result + singleResult;
+            String singleResult = sixRedBallList.toString() + " + " + blueBallStr + "\n\n";
+            result = result + singleResult;
         }
         return result;
     }
