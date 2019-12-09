@@ -15,7 +15,6 @@ public class PayHowNum
         int index = random.nextInt(2);
         if (index == 1)
         {
-
             int num = random.nextInt(6);
             if (num == 0)
             {

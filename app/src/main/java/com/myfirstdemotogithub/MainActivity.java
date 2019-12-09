@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +22,7 @@ import java.util.Random;
 public class MainActivity extends Activity implements OnClickListener
 {
 
-    private TextView s, d, q, p,m, ss, dd, qq, pp,num;
+    private TextView s, d, q, p, m, ss, dd, qq, pp, num;
     private ImageButton icon, icon2;
     private EditText editText;
     private LinearLayout linearLayout;
@@ -102,7 +103,15 @@ public class MainActivity extends Activity implements OnClickListener
             copyContent = "排列五\n" + pp.getText().toString() + "\n";
         } else if (m == v)
         {
-            num.setText(new PayHowNum().setBallText());
+            String toast = new PayHowNum().setBallText();
+            if (toast.equals("0"))
+            {
+                Toast.makeText(getApplicationContext(), "不买", Toast.LENGTH_SHORT).show();
+                num.setText(null);
+            } else
+            {
+                num.setText(toast);
+            }
         } else if (icon == v)
         {
             RadomSelect(6);
@@ -216,7 +225,7 @@ public class MainActivity extends Activity implements OnClickListener
         if (type == 6)
         {
             String result = "";
-            for (int j = 0; j <4 ; j++)
+            for (int j = 0; j < 4; j++)
             {
                 random = new Random();
                 List<String> list1 = new ArrayList<String>();
@@ -246,12 +255,12 @@ public class MainActivity extends Activity implements OnClickListener
                     blueList.remove(0);
                     blue = random.nextInt(blueList.size());
                 }
-                String singleResult = list1.toString() + " + " + blue+"\n\n";
-                result = result +singleResult;
+                String singleResult = list1.toString() + " + " + blue + "\n\n";
+                result = result + singleResult;
             }
 
             copyContent = result;
-            String textStr = list.toString() + "  \n\n" +  result;
+            String textStr = list.toString() + "  \n\n" + result;
             ss.setText(textStr);
         }
     }
