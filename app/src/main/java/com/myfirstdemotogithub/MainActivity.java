@@ -114,6 +114,7 @@ public class MainActivity extends Activity implements OnClickListener
                 {
                     num.setText(toast);
                     copyContent = "机选" + num.getText().toString() + "注";
+                    Toast.makeText(getApplicationContext(), copyContent, Toast.LENGTH_SHORT).show();
                 }
             }
         } else if (icon == v)
