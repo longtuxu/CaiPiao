@@ -21,7 +21,7 @@ import java.util.Random;
 public class MainActivity extends Activity implements OnClickListener
 {
 
-    private TextView s, d, q, p, ss, dd, qq, pp;
+    private TextView s, d, q, p,m, ss, dd, qq, pp,num;
     private ImageButton icon, icon2;
     private EditText editText;
     private LinearLayout linearLayout;
@@ -56,16 +56,19 @@ public class MainActivity extends Activity implements OnClickListener
         d = findViewById(R.id.d);
         q = findViewById(R.id.q);
         p = findViewById(R.id.p);
+        m = findViewById(R.id.pay);
 
         s.setOnClickListener(this);
         d.setOnClickListener(this);
         q.setOnClickListener(this);
         p.setOnClickListener(this);
+        m.setOnClickListener(this);
 
         ss = findViewById(R.id.ss);
         dd = findViewById(R.id.dd);
         qq = findViewById(R.id.qq);
         pp = findViewById(R.id.pp);
+        num = findViewById(R.id.num);
 
         icon = findViewById(R.id.icon);
         icon.setOnClickListener(this);
@@ -97,6 +100,9 @@ public class MainActivity extends Activity implements OnClickListener
         {
             pp.setText(new PaiLieWu().setBallText());
             copyContent = "排列五\n" + pp.getText().toString() + "\n";
+        } else if (m == v)
+        {
+            num.setText(new PayHowNum().setBallText());
         } else if (icon == v)
         {
             RadomSelect(6);
