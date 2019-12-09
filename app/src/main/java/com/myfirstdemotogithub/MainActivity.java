@@ -104,13 +104,17 @@ public class MainActivity extends Activity implements OnClickListener
         } else if (m == v)
         {
             String toast = new PayHowNum().setBallText();
-            if (toast.equals("0"))
+            if (toast != null)
             {
-                Toast.makeText(getApplicationContext(), "不买", Toast.LENGTH_SHORT).show();
-                num.setText(null);
-            } else
-            {
-                num.setText(toast);
+                if ("0".equals(toast))
+                {
+                    Toast.makeText(getApplicationContext(), "不买", Toast.LENGTH_SHORT).show();
+                    num.setText(null);
+                } else
+                {
+                    num.setText(toast);
+                    copyContent = "机选" + num.getText().toString() + "注";
+                }
             }
         } else if (icon == v)
         {
