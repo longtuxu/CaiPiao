@@ -67,10 +67,11 @@ public class ShuangSeQiu
         return blueBallStr;
     }
 
+    //机选两组双色球
     public String setShuangSeQiuText()
     {
         String result = "";
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 2; i++)
         {
             sixRedBallList.clear();
             blueBallStr = "";
