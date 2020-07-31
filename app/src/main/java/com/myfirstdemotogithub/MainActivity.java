@@ -85,22 +85,27 @@ public class MainActivity extends Activity implements OnClickListener
     @Override
     public void onClick(View v)
     {
+        copyContent = "";
         if (s == v)
         {
-            ss.setText(new ShuangSeQiu().setShuangSeQiuText());
-            copyContent = ss.getText().toString() + "\n";
+            String copySSText = new ShuangSeQiu().setShuangSeQiuText();
+            ss.setText(copySSText);
+            copyContent = copySSText + "\n";
         } else if (d == v)
         {
-            dd.setText(new DaLeTou().setDaletouText());
-            copyContent = "大乐透\n" + dd.getText().toString() + "\n";
+            String copyDDText = new DaLeTou().setDaletouText();
+            dd.setText(copyDDText);
+            copyContent = "大乐透\n" + copyDDText + "\n";
         } else if (q == v)
         {
-            qq.setText(new QiXingCai().setBallText());
-            copyContent = "七星彩\n" + qq.getText().toString() + "\n";
+            String copyQQText = new QiXingCai().setBallText();
+            qq.setText(copyQQText);
+            copyContent = "七星彩\n" + copyQQText + "\n";
         } else if (p == v)
         {
-            pp.setText(new PaiLieWu().setBallText());
-            copyContent = "排列五\n" + pp.getText().toString() + "\n";
+            String copyPPText = new PaiLieWu().setBallText();
+            pp.setText(copyPPText);
+            copyContent = "排列五\n" + copyPPText + "\n";
         } else if (m == v)
         {
             String toast = new PayHowNum().setBallText();
@@ -119,7 +124,7 @@ public class MainActivity extends Activity implements OnClickListener
             }
         } else if (icon == v)
         {
-            RadomSelect(6);
+            RandomSelect(6);
         } else if (icon2 == v)
         {
             linearLayout.setVisibility(View.VISIBLE);
@@ -220,10 +225,9 @@ public class MainActivity extends Activity implements OnClickListener
 
 
     @SuppressLint("NewApi")
-    private void RadomSelect(int type)
+    private void RandomSelect(int type)
     {
         random = new Random();
-        List<String> ssqRedlist;
         int blue = 0;
 
         //点双色球图标
@@ -276,5 +280,6 @@ public class MainActivity extends Activity implements OnClickListener
     {
         cm = (ClipboardManager) getBaseContext().getSystemService(Context.CLIPBOARD_SERVICE);
         cm.setText(copyContent);
+        copyContent = "";
     }
 }
