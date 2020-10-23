@@ -10,15 +10,20 @@ import java.util.Random;
 public class QiXingCai
 {
     Random random = new Random();
-    List<String> ballList = new ArrayList<>();
+    List<String> sixNumber = new ArrayList<>();
 
     public String setBallText()
     {
-        for (int i = 1; i <= 7; i++)
+//        前6位0-9
+        for (int i = 1; i <= 6; i++)
         {
             int index = random.nextInt(10);
-            ballList.add(String.valueOf(index));
+            sixNumber.add(String.valueOf(index));
         }
-        return ballList.toString();
+//        末位0-14
+        Random random = new Random();
+        String lastNumber = String.valueOf(random.nextInt(15));
+        String number = sixNumber.toString() + "  +  " + lastNumber;
+        return number;
     }
 }

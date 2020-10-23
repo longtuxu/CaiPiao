@@ -108,16 +108,16 @@ public class MainActivity extends Activity implements OnClickListener
             copyContent = "排列五\n" + copyPPText + "\n";
         } else if (m == v)
         {
-            String toast = new PayHowNum().setBallText();
-            if (toast != null)
+            String howMany = new PayHowNum().setBallText();
+            if (howMany != null)
             {
-                if ("0".equals(toast))
+                if ("0".equals(howMany))
                 {
                     Toast.makeText(getApplicationContext(), "不买", Toast.LENGTH_SHORT).show();
                     num.setText(null);
                 } else
                 {
-                    num.setText(toast);
+                    num.setText(howMany);
                     copyContent = "机选" + num.getText().toString() + "注";
                     Toast.makeText(getApplicationContext(), copyContent, Toast.LENGTH_SHORT).show();
                 }
