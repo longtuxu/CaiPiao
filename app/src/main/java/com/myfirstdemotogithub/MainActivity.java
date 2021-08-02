@@ -22,7 +22,7 @@ import java.util.Random;
 public class MainActivity extends Activity implements OnClickListener
 {
 
-    private TextView s, d, q, p, m, ss, dd, qq, pp, num;
+    private TextView s, d, q, p, k, m, ss, dd, qq, pp, kk, num;
     private ImageButton icon, icon2;
     private EditText editText;
     private LinearLayout linearLayout;
@@ -57,18 +57,21 @@ public class MainActivity extends Activity implements OnClickListener
         d = findViewById(R.id.d);
         q = findViewById(R.id.q);
         p = findViewById(R.id.p);
+        k = findViewById(R.id.k);
         m = findViewById(R.id.pay);
 
         s.setOnClickListener(this);
         d.setOnClickListener(this);
         q.setOnClickListener(this);
         p.setOnClickListener(this);
+        k.setOnClickListener(this);
         m.setOnClickListener(this);
 
         ss = findViewById(R.id.ss);
         dd = findViewById(R.id.dd);
         qq = findViewById(R.id.qq);
         pp = findViewById(R.id.pp);
+        kk = findViewById(R.id.kk);
         num = findViewById(R.id.num);
 
         icon = findViewById(R.id.icon);
@@ -95,17 +98,22 @@ public class MainActivity extends Activity implements OnClickListener
         {
             String copyDDText = new DaLeTou().setDaletouText();
             dd.setText(copyDDText);
-            copyContent = "大乐透\n" + copyDDText + "\n";
+            copyContent = "超级大乐透\n\n" + copyDDText + "\n";
         } else if (q == v)
         {
             String copyQQText = new QiXingCai().setBallText();
             qq.setText(copyQQText);
-            copyContent = "七星彩\n" + copyQQText + "\n";
+            copyContent = "七星彩\n\n" + copyQQText + "\n";
         } else if (p == v)
         {
             String copyPPText = new PaiLieWu().setBallText();
             pp.setText(copyPPText);
-            copyContent = "排列五\n" + copyPPText + "\n";
+            copyContent = "排列五\n\n" + copyPPText + "\n";
+        } else if (k == v)
+        {
+            String copyPPText = new KuaiLeBa().setBallText();
+            kk.setText(copyPPText);
+            copyContent = "快乐8 （选十）\n\n" + copyPPText + "\n";
         } else if (m == v)
         {
             String howMany = new PayHowNum().setBallText();
