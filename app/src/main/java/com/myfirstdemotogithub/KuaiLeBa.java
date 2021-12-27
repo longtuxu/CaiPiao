@@ -7,15 +7,18 @@ import java.util.Random;
 public class KuaiLeBa
 {
     Random random = new Random();
+    Random randomSelect = new Random();
     List<String> redList = new ArrayList<>();
     List<String> BallList = new ArrayList<>();
+    int randomNumb = 0;
 
     // 获取80个红球
     public List<String> getRedBall()
     {
         String redBall;
         getAllRedList();
-        for (int i = 1; i <= 10; i++)
+        randomNumb = randomSelect.nextInt(11);
+        for (int i = 1; i <= randomNumb; i++)
         {
             int index = random.nextInt(redList.size());
             redBall = redList.get(index);
@@ -23,6 +26,11 @@ public class KuaiLeBa
             redList.remove(redBall);
         }
         return BallList;
+    }
+
+    public int getRandomNumb()
+    {
+        return randomNumb;
     }
 
     // 获取所有红球数组

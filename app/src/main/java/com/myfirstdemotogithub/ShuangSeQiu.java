@@ -78,7 +78,7 @@ public class ShuangSeQiu
             getRedBallList();
             getSixRedBallList();
             getBlueBall();
-            String singleResult = sixRedBallList.toString() + " + " + blueBallStr + "\n\n";
+            String singleResult = sixRedBallList.toString() + " + " + blueBallStr;
             result = result + singleResult;
         }
         return result;

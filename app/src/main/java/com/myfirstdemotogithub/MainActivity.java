@@ -93,7 +93,7 @@ public class MainActivity extends Activity implements OnClickListener
         {
             String copySSText = new ShuangSeQiu().setShuangSeQiuText();
             ss.setText(copySSText);
-            copyContent = copySSText + "\n";
+            copyContent = "双色球\n\n" + copySSText + "\n";
         } else if (d == v)
         {
             String copyDDText = new DaLeTou().setDaletouText();
@@ -111,9 +111,10 @@ public class MainActivity extends Activity implements OnClickListener
             copyContent = "排列五\n\n" + copyPPText + "\n";
         } else if (k == v)
         {
-            String copyPPText = new KuaiLeBa().setBallText();
+            KuaiLeBa kuaiLeBa = new KuaiLeBa();
+            String copyPPText = kuaiLeBa.setBallText();
             kk.setText(copyPPText);
-            copyContent = "快乐8 （选十）\n\n" + copyPPText + "\n";
+            copyContent = "快乐8 【选" + kuaiLeBa.getRandomNumb() + "】" + "\n\n" + copyPPText + "\n";
         } else if (m == v)
         {
             String howMany = new PayHowNum().setBallText();
