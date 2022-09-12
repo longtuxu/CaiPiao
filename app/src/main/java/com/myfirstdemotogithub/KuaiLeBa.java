@@ -17,7 +17,9 @@ public class KuaiLeBa
     {
         String redBall;
         getAllRedList();
-        randomNumb = randomSelect.nextInt(11);
+        int min = 7;
+        int max = 10;
+        randomNumb = randomSelect.nextInt(max) % (max - min + 1) + min;
         for (int i = 1; i <= randomNumb; i++)
         {
             int index = random.nextInt(redList.size());
