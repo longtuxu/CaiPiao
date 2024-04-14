@@ -7,12 +7,12 @@ import java.util.Random;
 /**
  * 排列五随机
  */
-public class PaiLieWu
+public class Arrange5
 {
     Random random = new Random();
     List<String> ballList = new ArrayList<>();
 
-    public String setBallText()
+    public String getArrange5Str()
     {
         for (int i = 1; i <= 5; i++)
         {

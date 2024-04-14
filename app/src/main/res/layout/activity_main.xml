@@ -5,8 +5,29 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@mipmap/timg"
+        android:background="@mipmap/background"
         android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/k"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="快乐8"
+                android:textSize="20sp"
+                android:gravity="right"/>/>
+
+            <TextView
+                android:id="@+id/kk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -21,28 +42,11 @@
 
                 <TextView
                     android:id="@+id/s"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="双色球"
-                    android:textSize="20sp" />
-
-                <ImageButton
-                    android:id="@+id/icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="20dp"
-                    android:background="#C5C1AA"
-                    android:src="@drawable/more" />
-
-                <ImageButton
-                    android:id="@+id/icon2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="20dp"
-                    android:background="#C5C1AA"
-                    android:src="@drawable/more" />
+                    android:textSize="20sp"
+                    android:gravity="right"/>/>
 
             </LinearLayout>
 
@@ -51,30 +55,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="16sp" />
-
-
-            <LinearLayout
-                android:id="@+id/editLinear"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:visibility="gone">
-
-                <EditText
-                    android:id="@+id/editext"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/get"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Get"
-                    android:textSize="16sp" />
-
-            </LinearLayout>
 
         </LinearLayout>
 
@@ -89,7 +69,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="大乐透"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:gravity="right"/>/>
 
             <TextView
                 android:id="@+id/dd"
@@ -109,7 +90,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="七星彩"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:gravity="right"/>/>
 
             <TextView
                 android:id="@+id/qq"
@@ -129,7 +111,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="排五"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:gravity="right"/>/>
 
             <TextView
                 android:id="@+id/pp"
@@ -138,25 +121,7 @@
                 android:textSize="16sp" />
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/k"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="快乐8"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/kk"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="16sp" />
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -165,14 +130,15 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/pay"
+                android:id="@+id/selectTicket"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="买不买"
-                android:textSize="20sp" />
+                android:text="今日开奖"
+                android:textSize="20sp"
+                android:gravity="right"/>
 
             <TextView
-                android:id="@+id/num"
+                android:id="@+id/todayTicket"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="16sp" />

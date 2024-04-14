@@ -8,6 +8,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -22,33 +23,17 @@ import java.util.Random;
 public class MainActivity extends Activity implements OnClickListener
 {
 
-    private TextView s, d, q, p, k, m, ss, dd, qq, pp, kk, num;
-    private ImageButton icon, icon2;
-    private EditText editText;
-    private LinearLayout linearLayout;
-    private TextView get;
+    private TextView s, d, q, p, k, selectTicketTx, ss, dd, qq, pp, kk, todayTicket;
     private ClipboardManager cm;
     private String copyContent;
-    private List<String> list;
-    Random random = new Random();
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        hideActionBar();
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         initUI();
-        setInitSsqList();
-    }
-
-    private void hideActionBar()
-    {
-        ActionBar bar = getActionBar();
-        if (bar != null)
-        {
-            bar.hide();
-        }
     }
 
     private void initUI()
@@ -58,31 +43,22 @@ public class MainActivity extends Activity implements OnClickListener
         q = findViewById(R.id.q);
         p = findViewById(R.id.p);
         k = findViewById(R.id.k);
-        m = findViewById(R.id.pay);
+        selectTicketTx = findViewById(R.id.selectTicket);
 
         s.setOnClickListener(this);
         d.setOnClickListener(this);
         q.setOnClickListener(this);
         p.setOnClickListener(this);
         k.setOnClickListener(this);
-        m.setOnClickListener(this);
+        selectTicketTx.setOnClickListener(this);
 
         ss = findViewById(R.id.ss);
         dd = findViewById(R.id.dd);
         qq = findViewById(R.id.qq);
         pp = findViewById(R.id.pp);
         kk = findViewById(R.id.kk);
-        num = findViewById(R.id.num);
+        todayTicket = findViewById(R.id.todayTicket);
 
-        icon = findViewById(R.id.icon);
-        icon.setOnClickListener(this);
-        icon2 = findViewById(R.id.icon2);
-        icon2.setOnClickListener(this);
-
-        linearLayout = findViewById(R.id.editLinear);
-        editText = findViewById(R.id.editext);
-        get = findViewById(R.id.get);
-        get.setOnClickListener(this);
     }
 
     @Override
@@ -91,200 +67,39 @@ public class MainActivity extends Activity implements OnClickListener
         copyContent = "";
         if (s == v)
         {
-            String copySSText = new ShuangSeQiu().setShuangSeQiuText();
+            String copySSText = new TwoTone().getTwoToneStr();
             ss.setText(copySSText);
             copyContent = "双色球\n\n" + copySSText + "\n";
         } else if (d == v)
         {
-            String copyDDText = new DaLeTou().setDaletouText();
+            String copyDDText = new SuperLotto().setSuperLottoStr();
             dd.setText(copyDDText);
             copyContent = "超级大乐透\n\n" + copyDDText + "\n";
         } else if (q == v)
         {
-            String copyQQText = new QiXingCai().setBallText();
+            String copyQQText = new SevenStarColor().getSevenStarColorStr();
             qq.setText(copyQQText);
             copyContent = "七星彩\n\n" + copyQQText + "\n";
         } else if (p == v)
         {
-            String copyPPText = new PaiLieWu().setBallText();
+            String copyPPText = new Arrange5().getArrange5Str();
             pp.setText(copyPPText);
             copyContent = "排列五\n\n" + copyPPText + "\n";
         } else if (k == v)
         {
-            KuaiLeBa kuaiLeBa = new KuaiLeBa();
-            String copyPPText = kuaiLeBa.setBallText();
+            Happy8 happy8 = new Happy8();
+            String copyPPText = happy8.setBallStr();
             kk.setText(copyPPText);
-            copyContent = "快乐8 【选" + kuaiLeBa.getRandomNumb() + "】" + "\n\n" + copyPPText + "\n";
-        } else if (m == v)
+            copyContent = "快乐8 【选" + happy8.getChineseNumStr() + "】" + "\n\n" + copyPPText + "\n";
+        } else if (selectTicketTx == v)
         {
-            String howMany = new PayHowNum().setBallText();
-            if (howMany != null)
-            {
-                if ("0".equals(howMany))
-                {
-                    Toast.makeText(getApplicationContext(), "不买", Toast.LENGTH_SHORT).show();
-                    num.setText(null);
-                } else
-                {
-                    num.setText(howMany);
-                    copyContent = "机选" + num.getText().toString() + "注";
-                    Toast.makeText(getApplicationContext(), copyContent, Toast.LENGTH_SHORT).show();
-                }
-            }
-        } else if (icon == v)
-        {
-            RandomSelect(6);
-        } else if (icon2 == v)
-        {
-            linearLayout.setVisibility(View.VISIBLE);
-        } else if (get == v)
-        {
-            inputDataToRadom();
-            copySelect();
+            // 今天开奖
+            String selectTicket = new SelcetTicket().selectTicket();
+            Toast.makeText(getApplicationContext(), selectTicket, Toast.LENGTH_SHORT).show();
         }
         copySelect();
     }
 
-    private void inputDataToRadom()
-    {
-        String ediStr = editText.getText().toString();
-        if (ediStr.contains(" "))
-        {
-            ediStr.replaceAll(" ", "");
-        }
-        if (ediStr.contains("，"))
-        {
-            ediStr.replaceAll("，", ",");
-        }
-        if (ediStr.contains("'"))
-        {
-            ediStr.replaceAll("'", ",");
-        }
-        if (ediStr.contains(",,"))
-        {
-            ediStr.replaceAll(",,", ",");
-        }
-
-        String[] oneStr = ediStr.split(",");
-
-        List<String> list = new ArrayList<String>();
-
-        for (int i = 0; i < oneStr.length; i++)
-        {
-            if (!list.contains(oneStr[i]))
-            {
-                list.add(oneStr[i]);
-            }
-        }
-
-        //红球
-        List<String> list2 = new ArrayList<String>();
-        for (int i = 0; i < 6; i++)
-        {
-            random = new Random();
-            int num = random.nextInt(list.size());
-            String data = list.get(num);
-            if (!list2.contains(data))
-            {
-                list2.add(data);
-            } else
-            {
-                i--;
-            }
-        }
-
-        //蓝球
-        random = new Random();
-        List<Integer> list3 = new ArrayList<Integer>();
-        for (int i = 0; i < 17; i++)
-        {
-            list3.add(i);
-        }
-        list3.remove(0);
-        int blue = list3.get(random.nextInt(list3.size()));
-
-        ss.setText(list2.toString() + " + " + blue);
-        copyContent = list2.toString() + " + " + blue;
-    }
-
-    private void setInitSsqList()
-    {
-        list = new ArrayList<>();
-        for (int i = 0; i < 30; i++)
-        {
-            int data = random.nextInt(34);
-            String dataStr = null;
-            if (data < 10)
-            {
-                dataStr = "0" + String.valueOf(data);
-            } else
-            {
-                dataStr = String.valueOf(data);
-            }
-            if (!list.contains(dataStr) && !"00".equals(dataStr))
-            {
-                if (list.size() < 11)
-                {
-                    list.add(dataStr);
-                    i++;
-                }
-            }
-        }
-    }
-
-
-    @SuppressLint("NewApi")
-    private void RandomSelect(int type)
-    {
-        random = new Random();
-        int blue = 0;
-
-        //点双色球图标
-        if (type == 6)
-        {
-            String result = "";
-            for (int j = 0; j < 4; j++)
-            {
-                random = new Random();
-                List<String> list1 = new ArrayList<String>();
-                for (int i = 0; i < 6; i++)
-                {
-                    int num = random.nextInt(list.size());
-                    String data = list.get(num);
-                    if (!list1.contains(data))
-                    {
-                        list1.add(data);
-                    } else
-                    {
-                        i--;
-                    }
-                }
-
-                //蓝球
-                List<Integer> blueList = new ArrayList<>();
-                for (int i = 0; i < 17; i++)
-                {
-                    blueList.add(i);
-                }
-
-                blue = random.nextInt(17);
-                if (blue == 0)
-                {
-                    blueList.remove(0);
-                    blue = random.nextInt(blueList.size());
-                }
-                String singleResult = list1.toString() + " + " + blue + "\n\n";
-                result = result + singleResult;
-            }
-
-            copyContent = result;
-            String textStr = list.toString() + "  \n\n" + result;
-            ss.setText(textStr);
-        }
-    }
-
-    @SuppressWarnings("deprecation")
-    @SuppressLint("NewApi")
     private void copySelect()
     {
         cm = (ClipboardManager) getBaseContext().getSystemService(Context.CLIPBOARD_SERVICE);

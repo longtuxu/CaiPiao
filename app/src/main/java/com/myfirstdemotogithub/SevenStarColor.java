@@ -7,12 +7,12 @@ import java.util.Random;
 /**
  * 七星彩随机
  */
-public class QiXingCai
+public class SevenStarColor
 {
     Random random = new Random();
     List<String> sixNumber = new ArrayList<>();
 
-    public String setBallText()
+    public String getSevenStarColorStr()
     {
 //        前6位0-9
         for (int i = 1; i <= 6; i++)
