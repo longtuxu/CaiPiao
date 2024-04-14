@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.Random;
 
 /**
- * amount个球随机选择size个
+ * amount个球随机选择size个。。。
  */
 public class BallUtils
 {
