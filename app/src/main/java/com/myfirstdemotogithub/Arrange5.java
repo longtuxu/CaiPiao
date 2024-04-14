@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * 排列五随机
+ * 排列五
  */
 public class Arrange5
 {
