@@ -19,14 +19,10 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
+
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.myfirstdemotogithub.db.DBHelper;
-import com.myfirstdemotogithub.db.YourContract;
 import com.myfirstdemotogithub.file.StringToFileSaver;
 
 import org.jsoup.Jsoup;
@@ -56,7 +52,6 @@ public class MainActivity extends Activity implements OnClickListener
     private Button saveBtn;
     private ClipboardManager cm;
     private String copyContent, copyBallToFileStr;
-    String name;
     String sameNumberStr;
     String fileContent;
 
@@ -149,46 +144,6 @@ public class MainActivity extends Activity implements OnClickListener
         cm = (ClipboardManager) getBaseContext().getSystemService(Context.CLIPBOARD_SERVICE);
         cm.setText(copyContent);
         copyContent = "";
-    }
-
-    private void saveData()
-    {
-        new Thread(new Runnable()
-        {
-            @Override
-            public void run()
-            {
-
-                // 获取可写数据库
-                DBHelper dbHelper = new DBHelper(getApplicationContext());
-                SQLiteDatabase db = dbHelper.getWritableDatabase();
-                ContentValues values = new ContentValues();
-
-                values.put(YourContract.YourEntry.COLUMN_NAME_TITLE, "Your value");
-                long newRowId = db.insert(YourContract.YourEntry.TABLE_NAME, null, values);
-                Cursor cursor = db.rawQuery("SELECT * FROM your_table_name", null);
-                if (cursor.moveToFirst())
-                {
-                    do
-                    {
-                        name = cursor.getString(cursor.getColumnIndex(YourContract.YourEntry.COLUMN_NAME_TITLE));
-                        // 处理数据
-                    } while (cursor.moveToNext());
-                }
-                cursor.close();
-                db.close();
-                // 数据库操作完成后，可以使用Handler将结果传递回主线程
-                new Handler(Looper.getMainLooper()).post(new Runnable()
-                {
-                    @Override
-                    public void run()
-                    {
-                        // 进行UI操作或发送通知，表明数据库操作已完成
-                        Toast.makeText(getApplicationContext(), "连接成功" + name, Toast.LENGTH_LONG).show();
-                    }
-                });
-            }
-        }).start();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)

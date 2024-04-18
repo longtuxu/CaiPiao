@@ -11,12 +11,13 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.widget.Toast;
 
-
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-
+/**
+保存数据到文件中
+*/
 public class StringToFileSaver {
 
     private static final int PERMISSION_REQUEST_WRITE_STORAGE = 1;
