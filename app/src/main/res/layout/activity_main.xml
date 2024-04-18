@@ -14,13 +14,27 @@
             android:layout_margin="20dp"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/k"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="快乐8"
-                android:textSize="20sp"
-                android:gravity="right"/>/>
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/saveButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="保存"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/k"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="快乐8"
+                    android:textSize="20sp" />/>
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/kk"
@@ -44,9 +58,9 @@
                     android:id="@+id/s"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="right"
                     android:text="双色球"
-                    android:textSize="20sp"
-                    android:gravity="right"/>/>
+                    android:textSize="20sp" />/>
 
             </LinearLayout>
 
@@ -68,9 +82,9 @@
                 android:id="@+id/d"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="right"
                 android:text="大乐透"
-                android:textSize="20sp"
-                android:gravity="right"/>/>
+                android:textSize="20sp" />/>
 
             <TextView
                 android:id="@+id/dd"
@@ -89,9 +103,9 @@
                 android:id="@+id/q"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="right"
                 android:text="七星彩"
-                android:textSize="20sp"
-                android:gravity="right"/>/>
+                android:textSize="20sp" />/>
 
             <TextView
                 android:id="@+id/qq"
@@ -110,9 +124,9 @@
                 android:id="@+id/p"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="right"
                 android:text="排五"
-                android:textSize="20sp"
-                android:gravity="right"/>/>
+                android:textSize="20sp" />/>
 
             <TextView
                 android:id="@+id/pp"
@@ -120,7 +134,6 @@
                 android:layout_height="wrap_content"
                 android:textSize="16sp" />
         </LinearLayout>
-
 
 
         <LinearLayout
@@ -133,9 +146,9 @@
                 android:id="@+id/selectTicket"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="right"
                 android:text="今日开奖"
-                android:textSize="20sp"
-                android:gravity="right"/>
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/todayTicket"
