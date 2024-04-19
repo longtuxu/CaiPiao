@@ -1,18 +1,17 @@
-package com.myfirstdemotogithub;
+package com.myfirstdemotogithub.ticket;
 
 import java.util.Random;
 
 /**
- * 排列五Arrange5
+ * 七星彩随机
  */
-
-public class Arrange5
+public class SevenStarColor
 {
-    public String getArrange5Str()
+    public String getSevenStarColorStr()
     {
-        int[] numbers = new int[5];
+        int[] numbers = new int[6];
         Random rand = new Random();
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 6; i++)
         {
             numbers[i] = rand.nextInt(10); // 生成 0 到 9 之间的随机数
         }
@@ -27,8 +26,12 @@ public class Arrange5
                 sb.append("、");
             }
         }
-        String ballListStr = sb.toString();
-        return ballListStr;
+        String sixBallStr = sb.toString();
+
+        // 末位0-14
+        Random random = new Random();
+        String lastNumberStr = String.valueOf(random.nextInt(15));
+        String ballStr = sixBallStr + "  +  " + lastNumberStr;
+        return ballStr;
     }
 }
-

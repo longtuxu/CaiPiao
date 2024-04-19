@@ -1,4 +1,6 @@
-package com.myfirstdemotogithub;
+package com.myfirstdemotogithub.ticket;
+
+import com.myfirstdemotogithub.util.BallUtils;
 
 /**
  * 大乐透随机

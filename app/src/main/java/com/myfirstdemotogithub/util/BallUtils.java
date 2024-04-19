@@ -1,4 +1,4 @@
-package com.myfirstdemotogithub;
+package com.myfirstdemotogithub.util;
 
 import java.util.ArrayList;
 import java.util.Collections;

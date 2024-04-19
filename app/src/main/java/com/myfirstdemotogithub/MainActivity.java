@@ -18,6 +18,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.myfirstdemotogithub.file.StringToFileSaver;
+import com.myfirstdemotogithub.ticket.Arrange5;
+import com.myfirstdemotogithub.ticket.Happy8;
+import com.myfirstdemotogithub.ticket.SevenStarColor;
+import com.myfirstdemotogithub.ticket.SuperLotto;
+import com.myfirstdemotogithub.ticket.TwoTone;
+import com.myfirstdemotogithub.tools.OpenTicketToday;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -115,7 +121,7 @@ public class MainActivity extends Activity implements OnClickListener
         } else if (selectTicketTx == v)
         {
             // 今天开奖
-            String selectTicket = new SelcetTicket().selectTicket();
+            String selectTicket = new OpenTicketToday().openTicketToday();
             Toast.makeText(getApplicationContext(), selectTicket, Toast.LENGTH_SHORT).show();
         } else if (saveBtn == v)
         {

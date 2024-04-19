@@ -1,4 +1,6 @@
-package com.myfirstdemotogithub;
+package com.myfirstdemotogithub.ticket;
+
+import com.myfirstdemotogithub.util.BallUtils;
 
 public class Happy8
 {

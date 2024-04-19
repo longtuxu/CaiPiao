@@ -1,4 +1,6 @@
-package com.myfirstdemotogithub;
+package com.myfirstdemotogithub.ticket;
+
+import com.myfirstdemotogithub.util.BallUtils;
 
 /**
  * 双色球随机
