@@ -1,7 +1,5 @@
 package com.myfirstdemotogithub;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 /**
@@ -9,21 +7,31 @@ import java.util.Random;
  */
 public class SevenStarColor
 {
-    Random random = new Random();
-    List<String> sixNumber = new ArrayList<>();
-
     public String getSevenStarColorStr()
     {
-//        前6位0-9
-        for (int i = 1; i <= 6; i++)
+        int[] numbers = new int[6];
+        Random rand = new Random();
+        for (int i = 0; i < 6; i++)
         {
-            int index = random.nextInt(10);
-            sixNumber.add(String.valueOf(index));
+            numbers[i] = rand.nextInt(10); // 生成 0 到 9 之间的随机数
         }
-//        末位0-14
+        //  把结果数组转化成需要的字符串
+        StringBuilder sb = new StringBuilder();
+        for (int j = 0; j < numbers.length; j++)
+        {
+            sb.append(numbers[j]);
+            if (j < numbers.length - 1)
+            {
+                // 在除了最后一个元素之外的元素后面加上逗号和空格
+                sb.append("、");
+            }
+        }
+        String sixBallStr = sb.toString();
+
+        // 末位0-14
         Random random = new Random();
-        String lastNumber = String.valueOf(random.nextInt(15));
-        String number = sixNumber.toString() + "  +  " + lastNumber;
-        return number;
+        String lastNumberStr = String.valueOf(random.nextInt(15));
+        String ballStr = sixBallStr + "  +  " + lastNumberStr;
+        return ballStr;
     }
 }

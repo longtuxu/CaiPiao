@@ -1,13 +1,8 @@
 package com.myfirstdemotogithub;
 
-import android.annotation.SuppressLint;
-import android.app.ActionBar;
 import android.app.Activity;
 import android.content.ClipboardManager;
-import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -19,7 +14,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager;
 import android.widget.Button;
-
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,16 +26,9 @@ import org.jsoup.select.Elements;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
-import java.util.Random;
 import java.util.Set;
 
 //练习
@@ -159,6 +146,7 @@ public class MainActivity extends Activity implements OnClickListener
         new Thread(new Runnable()
         {
             Set<Integer> set2;
+
             @Override
             public void run()
             {
@@ -195,7 +183,7 @@ public class MainActivity extends Activity implements OnClickListener
                         public void run()
                         {
                             // 更新UI上的数据
-                            Toast.makeText(getApplicationContext(), (set2.size())+"中"+sameNumberStr, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), (set2.size()) + "中" + sameNumberStr, Toast.LENGTH_SHORT).show();
                         }
                     });
                 } catch (IOException e)
@@ -207,7 +195,8 @@ public class MainActivity extends Activity implements OnClickListener
         }).start();
     }
 
-    public void readTextFromInternalStorage() {
+    public void readTextFromInternalStorage()
+    {
         File directory = new File(Environment.getExternalStoragePublicDirectory(
                 Environment.DIRECTORY_DOCUMENTS), "MyApp");
         String fileName = "my_data.txt";
@@ -215,24 +204,31 @@ public class MainActivity extends Activity implements OnClickListener
         File file = new File(directory, fileName);
         StringBuilder content = new StringBuilder();
 
-        if (file.exists()) { // 检查文件是否存在
-            try {
+        if (file.exists())
+        { // 检查文件是否存在
+            try
+            {
                 FileInputStream fis = new FileInputStream(file);
                 BufferedReader br = new BufferedReader(new InputStreamReader(fis));
                 String line;
-                while ((line = br.readLine()) != null) {
+                while ((line = br.readLine()) != null)
+                {
                     content.append(line);
                 }
-            } catch (IOException e) {
+            } catch (IOException e)
+            {
                 e.printStackTrace();
             }
-        } else {
+        } else
+        {
             Log.e("FileRead", "The file does not exist");
         }
 
-        if (content != null && content.length() > 0) { // 检查content是否非空
+        if (content != null && content.length() > 0)
+        { // 检查content是否非空
             fileContent = content.toString();
-        } else {
+        } else
+        {
             Log.e("FileRead", "The file content is null or empty");
         }
     }
