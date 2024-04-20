@@ -17,7 +17,7 @@ public class SuperLotto
         // 选蓝球
         String blueBallStr = ballUtils.getBallListStr(12, 2);
         // 蓝球+红球
-        String copyContent = redBallStr + " + " + blueBallStr;
+        String copyContent = redBallStr + "+" + blueBallStr;
         return copyContent;
     }
 }

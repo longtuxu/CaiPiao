@@ -18,7 +18,7 @@ public class TwoTone
         // 选蓝球
         String blueBallStr = ballUtils.getBallListStr(16, 1);
         // 蓝球+红球
-        String copyContent = redBallStr + " + " + blueBallStr;
+        String copyContent = redBallStr + "+" + blueBallStr;
         return copyContent;
     }
 }

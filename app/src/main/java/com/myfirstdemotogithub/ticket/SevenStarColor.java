@@ -22,7 +22,7 @@ public class SevenStarColor
             sb.append(numbers[j]);
             if (j < numbers.length - 1)
             {
-                // 在除了最后一个元素之外的元素后面加上逗号和空格
+                // 在除了最后一个元素之外的元素后面加上"、"和空格
                 sb.append("、");
             }
         }
@@ -31,7 +31,7 @@ public class SevenStarColor
         // 末位0-14
         Random random = new Random();
         String lastNumberStr = String.valueOf(random.nextInt(15));
-        String ballStr = sixBallStr + "  +  " + lastNumberStr;
+        String ballStr = sixBallStr + "、" + lastNumberStr;
         return ballStr;
     }
 }

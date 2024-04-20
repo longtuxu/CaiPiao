@@ -17,15 +17,15 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 /**
- * 保存数据到文件中
+ * 保存数据到七星彩文件中
  */
-public class StringToFileSaver
+public class SaveSevenStarColorStrToFile
 {
 
     private static final int PERMISSION_REQUEST_WRITE_STORAGE = 1;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public void saveStringToFile(Context context, String dataToSave)
+    public void saveSevenStarColorStrToFile(Context context, String dataToSave)
     {
         // 检查是否具有写入外部存储的权限
         if (ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE)
@@ -39,8 +39,8 @@ public class StringToFileSaver
 
         // 定义文件路径和名称
         File directory = new File(Environment.getExternalStoragePublicDirectory(
-                Environment.DIRECTORY_DOCUMENTS), "MyApp");
-        String fileName = "my_data.txt";
+                Environment.DIRECTORY_DOCUMENTS), "七星彩");
+        String fileName = "七星彩保存.txt";
 
         try
         {

@@ -17,7 +17,16 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.myfirstdemotogithub.file.StringToFileSaver;
+import com.myfirstdemotogithub.ReadFileStrCompareToLotteryData.ReadArrange5CompareData;
+import com.myfirstdemotogithub.ReadFileStrCompareToLotteryData.ReadHappy8CompareData;
+import com.myfirstdemotogithub.ReadFileStrCompareToLotteryData.ReadSevenStarColorCompareData;
+import com.myfirstdemotogithub.ReadFileStrCompareToLotteryData.ReadSuperLottoCompareData;
+import com.myfirstdemotogithub.ReadFileStrCompareToLotteryData.ReadTwoToneCompareData;
+import com.myfirstdemotogithub.file.SaveArrange5StrToFile;
+import com.myfirstdemotogithub.file.SaveHappy8StrToFile;
+import com.myfirstdemotogithub.file.SaveSevenStarColorStrToFile;
+import com.myfirstdemotogithub.file.SaveSuperLottoStrToFile;
+import com.myfirstdemotogithub.file.SaveTwoToneStrToFile;
 import com.myfirstdemotogithub.ticket.Arrange5;
 import com.myfirstdemotogithub.ticket.Happy8;
 import com.myfirstdemotogithub.ticket.SevenStarColor;
@@ -41,8 +50,8 @@ import java.util.Set;
 public class MainActivity extends Activity implements OnClickListener
 {
 
-    private TextView s, d, q, p, k, selectTicketTx, ss, dd, qq, pp, kk;
-    private Button saveBtn;
+    private TextView tv_twotone, tv_superlotto, tv_sevenstarcolor, tv_arrange5, tv_happy8, tv_opentickettoday, tv_show_twotone, tv_show_superlotto, tv_show_sevenstarcolor, tv_show_arrange5, tv_show_happy8;
+    private Button save_happy8_btn,save_twotone_btn,save_superlotto_btn,save_sevenstarcolor_btn,save_arrange5_btn;
     private ClipboardManager cm;
     private String copyContent, copyBallToFileStr;
     String sameNumberStr;
@@ -60,27 +69,35 @@ public class MainActivity extends Activity implements OnClickListener
 
     private void initUI()
     {
-        s = findViewById(R.id.s);
-        d = findViewById(R.id.d);
-        q = findViewById(R.id.q);
-        p = findViewById(R.id.p);
-        k = findViewById(R.id.k);
-        selectTicketTx = findViewById(R.id.selectTicket);
-        saveBtn = findViewById(R.id.saveButton);
+        tv_twotone = findViewById(R.id.tv_twotone);
+        tv_superlotto = findViewById(R.id.tv_superlotto);
+        tv_sevenstarcolor = findViewById(R.id.tv_sevenstarcolor);
+        tv_arrange5 = findViewById(R.id.tv_arrange5);
+        tv_happy8 = findViewById(R.id.tv_happy8);
+        tv_opentickettoday = findViewById(R.id.tv_opentickettoday);
+        save_happy8_btn = findViewById(R.id.save_happy8_btn);
+        save_twotone_btn = findViewById(R.id.save_twotone_btn);
+        save_superlotto_btn = findViewById(R.id.save_superlotto_btn);
+        save_sevenstarcolor_btn = findViewById(R.id.save_sevenstarcolor_btn);
+        save_arrange5_btn = findViewById(R.id.save_arrange5_btn);
 
-        s.setOnClickListener(this);
-        d.setOnClickListener(this);
-        q.setOnClickListener(this);
-        p.setOnClickListener(this);
-        k.setOnClickListener(this);
-        selectTicketTx.setOnClickListener(this);
-        saveBtn.setOnClickListener(this);
+        tv_twotone.setOnClickListener(this);
+        tv_superlotto.setOnClickListener(this);
+        tv_sevenstarcolor.setOnClickListener(this);
+        tv_arrange5.setOnClickListener(this);
+        tv_happy8.setOnClickListener(this);
+        tv_opentickettoday.setOnClickListener(this);
+        save_happy8_btn.setOnClickListener(this);
+        save_twotone_btn.setOnClickListener(this);
+        save_superlotto_btn.setOnClickListener(this);
+        save_sevenstarcolor_btn.setOnClickListener(this);
+        save_arrange5_btn.setOnClickListener(this);
 
-        ss = findViewById(R.id.ss);
-        dd = findViewById(R.id.dd);
-        qq = findViewById(R.id.qq);
-        pp = findViewById(R.id.pp);
-        kk = findViewById(R.id.kk);
+        tv_show_twotone = findViewById(R.id.tv_show_twotone);
+        tv_show_superlotto = findViewById(R.id.tv_show_superlotto);
+        tv_show_sevenstarcolor = findViewById(R.id.tv_show_sevenstarcolor);
+        tv_show_arrange5 = findViewById(R.id.tv_show_arrange5);
+        tv_show_happy8 = findViewById(R.id.tv_show_happy8);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -88,46 +105,67 @@ public class MainActivity extends Activity implements OnClickListener
     public void onClick(View v)
     {
         copyContent = "";
-        if (s == v)
+        if (tv_twotone == v)
         {
-            String copySSText = new TwoTone().getTwoToneStr();
-            ss.setText(copySSText);
-            copyContent = "双色球\n\n" + copySSText + "\n";
-        } else if (d == v)
+            String copyTwoToneText = new TwoTone().getTwoToneStr();
+            tv_show_twotone.setText(copyTwoToneText);
+            copyContent = "双色球\n\n" + copyTwoToneText + "\n";
+            copyBallToFileStr = copyTwoToneText;
+            SaveTwoToneStrToFile();
+        } else if (tv_superlotto == v)
         {
-            String copyDDText = new SuperLotto().setSuperLottoStr();
-            dd.setText(copyDDText);
-            copyContent = "超级大乐透\n\n" + copyDDText + "\n";
-
-
-        } else if (q == v)
+            String copySuperLottoText = new SuperLotto().setSuperLottoStr();
+            tv_show_superlotto.setText(copySuperLottoText);
+            copyContent = "超级大乐透\n\n" + copySuperLottoText + "\n";
+            copyBallToFileStr = copySuperLottoText;
+            saveSuperLottoStrToFile();
+        } else if (tv_sevenstarcolor == v)
         {
-            String copyQQText = new SevenStarColor().getSevenStarColorStr();
-            qq.setText(copyQQText);
-            copyContent = "七星彩\n\n" + copyQQText + "\n";
-        } else if (p == v)
+            String copySevenStarColorText = new SevenStarColor().getSevenStarColorStr();
+            tv_show_sevenstarcolor.setText(copySevenStarColorText);
+            copyContent = "七星彩\n\n" + copySevenStarColorText + "\n";
+            copyBallToFileStr = copySevenStarColorText;
+            saveSevenStarColorStrToFile();
+        } else if (tv_arrange5 == v)
         {
-            String copyPPText = new Arrange5().getArrange5Str();
-            pp.setText(copyPPText);
-            copyContent = "排列五\n\n" + copyPPText + "\n";
-        } else if (k == v)
+            String copyArrange5Text = new Arrange5().getArrange5Str();
+            tv_show_arrange5.setText(copyArrange5Text);
+            copyContent = "排列五\n\n" + copyArrange5Text + "\n";
+            copyBallToFileStr = copyArrange5Text;
+            saveArrange5StrToFile();
+        } else if (tv_happy8 == v)
         {
             Happy8 happy8 = new Happy8();
-            String copyPPText = happy8.setBallStr();
-            kk.setText(copyPPText);
-            copyContent = "快乐8 【选" + happy8.getChineseNumStr() + "】" + "\n\n" + copyPPText + "\n";
-            copyBallToFileStr = copyPPText;
-            saveFile();
-        } else if (selectTicketTx == v)
+            String copyHappy8Text = happy8.getHappy8Str();
+            tv_show_happy8.setText(copyHappy8Text);
+            copyContent = "快乐8 【选" + happy8.getChineseNumStr() + "】" + "\n\n" + copyHappy8Text + "\n";
+            copyBallToFileStr = copyHappy8Text;
+            SaveHappy8StrToFile();
+        } else if (tv_opentickettoday == v)
         {
             // 今天开奖
-            String selectTicket = new OpenTicketToday().openTicketToday();
-            Toast.makeText(getApplicationContext(), selectTicket, Toast.LENGTH_SHORT).show();
-        } else if (saveBtn == v)
+            String openTicketToday = new OpenTicketToday().openTicketToday();
+            Toast.makeText(getApplicationContext(), openTicketToday, Toast.LENGTH_SHORT).show();
+        } else if (save_happy8_btn == v)
         {
-            readTextFromInternalStorage();
-            compareTheWinBallNum();
-
+            // 快乐8比对
+            new ReadHappy8CompareData().readHappy8CompareData(this);
+        }else if (save_twotone_btn == v)
+        {
+            // 双色球比对
+            new ReadTwoToneCompareData().readTwoToneCompareData(this);
+        }else if (save_superlotto_btn == v)
+        {
+            // 大乐透比对
+            new ReadSuperLottoCompareData().readSuperLottoCompareData(this);
+        }else if (save_sevenstarcolor_btn == v)
+        {
+            // 七星彩比对
+            new ReadSevenStarColorCompareData().readSevenStarColorCompareData(this);
+        }else if (save_arrange5_btn == v)
+        {
+            // 排列5比对
+            new ReadArrange5CompareData().readArrange5CompareData(this);
         }
         copySelect();
     }
@@ -139,105 +177,38 @@ public class MainActivity extends Activity implements OnClickListener
         copyContent = "";
     }
 
+    //保存快乐8
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    private void saveFile()
+    private void SaveHappy8StrToFile()
     {
-        new StringToFileSaver().saveStringToFile(this, copyBallToFileStr);
+        new SaveHappy8StrToFile().saveHappy8StrToFile(this, copyBallToFileStr);
     }
 
-    //开奖数据与file字符串对比，得出中出的号码个数
-    private void compareTheWinBallNum()
+    // 保存双色球
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    private void SaveTwoToneStrToFile()
     {
-
-        new Thread(new Runnable()
-        {
-            Set<Integer> set2;
-
-            @Override
-            public void run()
-            {
-                try
-                {
-                    // 使用Jsoup连接到指定的网址并获取页面内容
-                    Document doc = Jsoup.connect("https://kaijiang.500.com/kl8.shtml").get();
-
-                    // 选择页面中彩票结果的元素，并打印出来
-                    Elements lotteryResults = doc.select("div.ball_box01");
-                    String lotteryResultsStr = lotteryResults.text();
-                    Set<Integer> set1 = new HashSet<>();
-                    set2 = new HashSet<>();
-
-                    // 构建数字集合
-                    for (String numStr : lotteryResultsStr.split(" "))
-                    {
-                        set1.add(Integer.parseInt(numStr)); // 将字符串分割为数字并添加到集合中
-                    }
-                    for (String numStr : fileContent.split("、"))
-                    {
-                        set2.add(Integer.parseInt(numStr)); // 同样将第二个字符串中的数字添加到集合中
-                    }
-
-                    // 求出集合的交集
-                    Set<Integer> intersection = new HashSet<>(set1);
-                    intersection.retainAll(set2);
-
-                    // 打印出交集元素的个数
-                    sameNumberStr = String.valueOf(intersection.size());
-                    new Handler(Looper.getMainLooper()).post(new Runnable()
-                    {
-                        @Override
-                        public void run()
-                        {
-                            // 更新UI上的数据
-                            Toast.makeText(getApplicationContext(), (set2.size()) + "中" + sameNumberStr, Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                } catch (IOException e)
-                {
-                    // 捕获和处理IO异常
-                    e.printStackTrace();
-                }
-            }
-        }).start();
+        new SaveTwoToneStrToFile().saveTwoToneStrToFile(this, copyBallToFileStr);
     }
 
-    public void readTextFromInternalStorage()
+    // 保存大乐透
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    private void saveSuperLottoStrToFile()
     {
-        File directory = new File(Environment.getExternalStoragePublicDirectory(
-                Environment.DIRECTORY_DOCUMENTS), "MyApp");
-        String fileName = "my_data.txt";
-
-        File file = new File(directory, fileName);
-        StringBuilder content = new StringBuilder();
-
-        if (file.exists())
-        { // 检查文件是否存在
-            try
-            {
-                FileInputStream fis = new FileInputStream(file);
-                BufferedReader br = new BufferedReader(new InputStreamReader(fis));
-                String line;
-                while ((line = br.readLine()) != null)
-                {
-                    content.append(line);
-                }
-            } catch (IOException e)
-            {
-                e.printStackTrace();
-            }
-        } else
-        {
-            Log.e("FileRead", "The file does not exist");
-        }
-
-        if (content != null && content.length() > 0)
-        { // 检查content是否非空
-            fileContent = content.toString();
-        } else
-        {
-            Log.e("FileRead", "The file content is null or empty");
-        }
+        new SaveSuperLottoStrToFile().saveSuperLottoStrToFile(this, copyBallToFileStr);
     }
 
+    // 保存七星彩
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    private void saveSevenStarColorStrToFile()
+    {
+        new SaveSevenStarColorStrToFile().saveSevenStarColorStrToFile(this, copyBallToFileStr);
+    }
 
+    // 保存排列5
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    private void saveArrange5StrToFile()
+    {
+        new SaveArrange5StrToFile().saveArrange5StrToFile(this, copyBallToFileStr);
+    }
 }

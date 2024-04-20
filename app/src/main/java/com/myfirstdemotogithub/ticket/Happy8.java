@@ -20,7 +20,7 @@ public class Happy8
         }
     }
 
-    public String setBallStr()
+    public String getHappy8Str()
     {
         // 选7到10的随机数
         selectCount = ballUtils.getRandom(7, 10);
