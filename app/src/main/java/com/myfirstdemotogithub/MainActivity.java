@@ -5,17 +5,12 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
-import android.os.Handler;
-import android.os.Looper;
 import android.support.annotation.RequiresApi;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.myfirstdemotogithub.ReadFileStrCompareToLotteryData.ReadArrange5CompareData;
 import com.myfirstdemotogithub.ReadFileStrCompareToLotteryData.ReadHappy8CompareData;
@@ -32,26 +27,15 @@ import com.myfirstdemotogithub.ticket.Happy8;
 import com.myfirstdemotogithub.ticket.SevenStarColor;
 import com.myfirstdemotogithub.ticket.SuperLotto;
 import com.myfirstdemotogithub.ticket.TwoTone;
+import com.myfirstdemotogithub.tools.CustomToast;
 import com.myfirstdemotogithub.tools.OpenTicketToday;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.select.Elements;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.HashSet;
-import java.util.Set;
 
 //练习
 public class MainActivity extends Activity implements OnClickListener
 {
 
     private TextView tv_twotone, tv_superlotto, tv_sevenstarcolor, tv_arrange5, tv_happy8, tv_opentickettoday, tv_show_twotone, tv_show_superlotto, tv_show_sevenstarcolor, tv_show_arrange5, tv_show_happy8;
-    private Button save_happy8_btn,save_twotone_btn,save_superlotto_btn,save_sevenstarcolor_btn,save_arrange5_btn;
+    private Button save_happy8_btn, save_twotone_btn, save_superlotto_btn, save_sevenstarcolor_btn, save_arrange5_btn;
     private ClipboardManager cm;
     private String copyContent, copyBallToFileStr;
     String sameNumberStr;
@@ -145,24 +129,24 @@ public class MainActivity extends Activity implements OnClickListener
         {
             // 今天开奖
             String openTicketToday = new OpenTicketToday().openTicketToday();
-            Toast.makeText(getApplicationContext(), openTicketToday, Toast.LENGTH_SHORT).show();
+            CustomToast.show(getApplicationContext(), openTicketToday, 500);
         } else if (save_happy8_btn == v)
         {
             // 快乐8比对
             new ReadHappy8CompareData().readHappy8CompareData(this);
-        }else if (save_twotone_btn == v)
+        } else if (save_twotone_btn == v)
         {
             // 双色球比对
             new ReadTwoToneCompareData().readTwoToneCompareData(this);
-        }else if (save_superlotto_btn == v)
+        } else if (save_superlotto_btn == v)
         {
             // 大乐透比对
             new ReadSuperLottoCompareData().readSuperLottoCompareData(this);
-        }else if (save_sevenstarcolor_btn == v)
+        } else if (save_sevenstarcolor_btn == v)
         {
             // 七星彩比对
             new ReadSevenStarColorCompareData().readSevenStarColorCompareData(this);
-        }else if (save_arrange5_btn == v)
+        } else if (save_arrange5_btn == v)
         {
             // 排列5比对
             new ReadArrange5CompareData().readArrange5CompareData(this);

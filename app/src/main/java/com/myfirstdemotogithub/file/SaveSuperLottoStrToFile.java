@@ -9,7 +9,8 @@ import android.os.Environment;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.widget.Toast;
+
+import com.myfirstdemotogithub.tools.CustomToast;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -47,7 +48,7 @@ public class SaveSuperLottoStrToFile
             // 确保目录存在
             if (!directory.exists() && !directory.mkdirs())
             {
-                Toast.makeText(context, "目录不存在", Toast.LENGTH_SHORT).show();
+                CustomToast.show(context, "目录不存在", 500);
                 return;
             }
 
@@ -59,14 +60,14 @@ public class SaveSuperLottoStrToFile
                 writer.newLine();
                 writer.flush();
 
-                Toast.makeText(context, "已保存", Toast.LENGTH_SHORT).show();
+                CustomToast.show(context, "已保存", 500);
             } catch (IOException e)
             {
-                Toast.makeText(context, "保存失败: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                CustomToast.show(context, "保存失败: " + e.getMessage(), 500);
             }
         } catch (Exception e)
         {
-            Toast.makeText(context, "An error occurred: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            CustomToast.show(context, "报错: " + e.getMessage(), 500);
         }
     }
 }
