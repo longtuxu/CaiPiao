@@ -19,7 +19,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 /**
  * 读取排列5文件，比对开奖数据
@@ -105,7 +104,7 @@ public class ReadArrange5CompareData
                                     // 更新UI上的数据
                                     Arrange5Prize arrange5Prize = new Arrange5Prize();
                                     String prize = arrange5Prize.checkPrizeLevel(Integer.valueOf(sameNumberStr));
-                                    CustomToast.show(context, "5 中 " + sameNumberStr, 500);
+                                    CustomToast.show(context, "5 中 " + sameNumberStr + "  " + prize, 500);
                                 }
                             });
                         } catch (IOException e)

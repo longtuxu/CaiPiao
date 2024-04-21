@@ -11,25 +11,36 @@ public class OpenTicketToday
 
     public String openTicketToday()
     {
-        String openTicketStr;
+        String openTicketStr = null;
         // 获取今天是星期几
         Calendar calendar = Calendar.getInstance();
         int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
 
         // 根据星期几执行相应操作
-        if (dayOfWeek == Calendar.MONDAY || dayOfWeek == Calendar.WEDNESDAY || dayOfWeek == Calendar.SATURDAY)
+        if (dayOfWeek == Calendar.MONDAY)
         {
-            // 如果是星期一，输出"大乐透"
             openTicketStr = "大乐透 + 快乐8";
-        } else if (dayOfWeek == Calendar.TUESDAY || dayOfWeek == Calendar.THURSDAY || dayOfWeek == Calendar.SUNDAY)
+        } else if (dayOfWeek == Calendar.TUESDAY)
         {
-            // 其他情况
+            openTicketStr = "双色球 + 七星彩 + 快乐8";
+        } else if (dayOfWeek == Calendar.WEDNESDAY)
+        {
+            openTicketStr = "大乐透 + 快乐8";
+        } else if (dayOfWeek == Calendar.THURSDAY)
+        {
             openTicketStr = "双色球 + 快乐8";
-        } else
+        } else if (dayOfWeek == Calendar.FRIDAY)
         {
-            openTicketStr = "排列5 + 七星彩";
+            openTicketStr = "七星彩 + 快乐8";
+        } else if (dayOfWeek == Calendar.SATURDAY)
+        {
+            openTicketStr = "大乐透 + 快乐8";
+        } else if (dayOfWeek == Calendar.SUNDAY)
+        {
+            openTicketStr = "双色球 + 七星彩 + 快乐8";
         }
         return openTicketStr;
     }
+
 
 }
