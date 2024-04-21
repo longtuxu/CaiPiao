@@ -35,6 +35,9 @@ import com.myfirstdemotogithub.tools.OpenTicketToday;
  *只有参与和不参与，不存在买多概率就大的可能性,一种彩票只买一注就是顶级参与了。
  *让你随机一天，不用钱，你也随机不到中四等奖以上的单注。
  * 总结：一种彩票单注只买一注
+ *
+ * 忠告：假如你对彩票有瘾，并且对今天的开奖非常期待。不妨安装此应用，点上一天随机，你就会明白什么叫概率。
+ *       你的幻想将毫无意义，甚至自己都有点想笑。
  */
 
 public class MainActivity extends Activity implements OnClickListener
