@@ -30,7 +30,13 @@ import com.myfirstdemotogithub.ticket.TwoTone;
 import com.myfirstdemotogithub.tools.CustomToast;
 import com.myfirstdemotogithub.tools.OpenTicketToday;
 
-//练习
+/**
+ *彩票单注多买一注都是侮辱智商。
+ *只有参与和不参与，不存在买多概率就大的可能性,一种彩票只买一注就是顶级参与了。
+ *让你随机一天，不用钱，你也随机不到中四等奖以上的单注。
+ * 总结：一种彩票单注只买一注
+ */
+
 public class MainActivity extends Activity implements OnClickListener
 {
 
@@ -38,9 +44,6 @@ public class MainActivity extends Activity implements OnClickListener
     private Button save_happy8_btn, save_twotone_btn, save_superlotto_btn, save_sevenstarcolor_btn, save_arrange5_btn;
     private ClipboardManager cm;
     private String copyContent, copyBallToFileStr;
-    String sameNumberStr;
-    String fileContent;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
