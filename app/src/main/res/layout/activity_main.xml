@@ -23,7 +23,7 @@
                     android:id="@+id/save_happy8_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="保存快乐8" />
+                    android:text="快乐8兑奖" />
 
                 <TextView
                     android:id="@+id/tv_happy8"
@@ -57,7 +57,7 @@
                     android:id="@+id/save_twotone_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="保存双色球" />
+                    android:text="双色球兑奖" />
 
                 <TextView
                     android:id="@+id/tv_twotone"
@@ -92,7 +92,7 @@
                     android:id="@+id/save_superlotto_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="保存大乐透" />
+                    android:text="大乐透兑奖" />
 
                 <TextView
                     android:id="@+id/tv_superlotto"
@@ -125,7 +125,7 @@
                     android:id="@+id/save_sevenstarcolor_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="保存七星彩" />
+                    android:text="七星彩兑奖" />
 
                 <TextView
                     android:id="@+id/tv_sevenstarcolor"
@@ -158,7 +158,7 @@
                     android:id="@+id/save_arrange5_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="保存排列5" />
+                    android:text="排列5兑奖" />
 
                 <TextView
                     android:id="@+id/tv_arrange5"
