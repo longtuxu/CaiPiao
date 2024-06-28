@@ -5,7 +5,6 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager;
@@ -29,6 +28,8 @@ import com.myfirstdemotogithub.ticket.SuperLotto;
 import com.myfirstdemotogithub.ticket.TwoTone;
 import com.myfirstdemotogithub.tools.CustomToast;
 import com.myfirstdemotogithub.tools.OpenTicketToday;
+
+import androidx.annotation.RequiresApi;
 
 /**
  *彩票单注多买一注都是侮辱智商。
