@@ -1,11 +1,9 @@
 package com.myfirstdemotogithub.ReadFileStrCompareToLotteryData;
 
 import android.content.Context;
-import android.os.Build;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
-import android.support.annotation.RequiresApi;
 
 import com.myfirstdemotogithub.prize.TwoTonePrize;
 import com.myfirstdemotogithub.tools.CustomToast;
@@ -66,7 +64,6 @@ public class ReadTwoToneCompareData
                 {
                     Set<Integer> fileSet;
 
-                    @RequiresApi(api = Build.VERSION_CODES.N)
                     @Override
                     public void run()
                     {
@@ -78,7 +75,7 @@ public class ReadTwoToneCompareData
                             // 选择页面中彩票结果的元素，并打印出来
                             Elements lotteryResults = doc.select("div.ball_box01");
                             String lotteryResultsStr = lotteryResults.text();
-                            Set<Integer> openSet = new LinkedHashSet<>();
+                            List<Integer> openSet = new ArrayList<>();
                             fileSet = new LinkedHashSet<>();
 
                             // 构建数字集合
