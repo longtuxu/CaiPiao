@@ -1,7 +1,9 @@
 package com.myfirstdemotogithub.ticket;
 
 import com.myfirstdemotogithub.util.BallUtils;
-
+/**
+ * 快乐8随机
+ * */
 public class Happy8
 {
     int selectCount;

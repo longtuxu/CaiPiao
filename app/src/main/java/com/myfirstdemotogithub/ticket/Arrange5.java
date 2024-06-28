@@ -3,7 +3,7 @@ package com.myfirstdemotogithub.ticket;
 import java.util.Random;
 
 /**
- * 排列五Arrange5
+ * 排列五随机
  */
 
 public class Arrange5

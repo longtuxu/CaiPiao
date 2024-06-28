@@ -4,11 +4,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Environment;
-import android.support.annotation.RequiresApi;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 
 import com.myfirstdemotogithub.tools.CustomToast;
 
@@ -16,6 +12,9 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 /**
  * 保存数据到排列5文件中
@@ -25,7 +24,6 @@ public class SaveArrange5StrToFile
 
     private static final int PERMISSION_REQUEST_WRITE_STORAGE = 1;
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void saveArrange5StrToFile(Context context, String dataToSave)
     {
         // 检查是否具有写入外部存储的权限

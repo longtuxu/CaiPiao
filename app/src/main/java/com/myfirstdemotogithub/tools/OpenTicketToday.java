@@ -5,6 +5,8 @@ import java.util.Calendar;
 
 /**
  * 今日开奖的彩票
+ *
+ * 点击今日开奖，显示今日开奖的彩票
  */
 public class OpenTicketToday
 {

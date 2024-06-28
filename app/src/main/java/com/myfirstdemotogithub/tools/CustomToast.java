@@ -3,7 +3,9 @@ package com.myfirstdemotogithub.tools;
 import android.content.Context;
 import android.os.CountDownTimer;
 import android.widget.Toast;
-
+/**
+ * 自定义Toast吐司，设置时长
+ */
 public class CustomToast
 {
 
