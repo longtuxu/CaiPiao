@@ -1,4 +1,5 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -23,14 +24,15 @@
                     android:id="@+id/save_happy8_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="快乐8兑奖" />
+                    android:text="@string/快乐8兑奖"
+                    style="@style/CustomButtonStyle"/>
 
                 <TextView
                     android:id="@+id/tv_happy8"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="right"
-                    android:text="快乐8"
+                    android:text="@string/快乐8"
                     android:textSize="20sp" />
 
             </LinearLayout>
@@ -57,15 +59,16 @@
                     android:id="@+id/save_twotone_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="双色球兑奖" />
+                    android:text="@string/双色球兑奖"
+                    style="@style/CustomButtonStyle"/>
 
                 <TextView
                     android:id="@+id/tv_twotone"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="right"
-                    android:text="双色球"
-                    android:textSize="20sp" />/>
+                    android:text="@string/双色球"
+                    android:textSize="20sp" />
 
             </LinearLayout>
 
@@ -92,15 +95,16 @@
                     android:id="@+id/save_superlotto_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="大乐透兑奖" />
+                    android:text="@string/大乐透兑奖"
+                    style="@style/CustomButtonStyle"/>
 
                 <TextView
                     android:id="@+id/tv_superlotto"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="right"
-                    android:text="大乐透"
-                    android:textSize="20sp" />/>
+                    android:text="@string/大乐透"
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <TextView
@@ -125,15 +129,16 @@
                     android:id="@+id/save_sevenstarcolor_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="七星彩兑奖" />
+                    android:text="@string/七星彩兑奖"
+                    style="@style/CustomButtonStyle"/>
 
                 <TextView
                     android:id="@+id/tv_sevenstarcolor"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="right"
-                    android:text="七星彩"
-                    android:textSize="20sp" />/>
+                    android:text="@string/七星彩"
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <TextView
@@ -158,15 +163,16 @@
                     android:id="@+id/save_arrange5_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="排列5兑奖" />
+                    android:text="@string/排列5兑奖"
+                    style="@style/CustomButtonStyle"/>
 
                 <TextView
                     android:id="@+id/tv_arrange5"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="right"
-                    android:text="排五"
-                    android:textSize="20sp" />/>
+                    android:text="@string/排五"
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <TextView
@@ -188,7 +194,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="right"
-                android:text="今日开奖"
+                android:text="@string/今日开奖"
                 android:textSize="20sp" />
 
             <TextView
@@ -213,14 +219,15 @@
                     android:id="@+id/paste_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="粘贴兑奖" />
+                    android:text="@string/粘贴兑奖"
+                    style="@style/CustomButtonStyle"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="right"
                     android:text=""
-                    android:textSize="20sp" />/>
+                    android:textSize="20sp" />
             </LinearLayout>
         </LinearLayout>
 

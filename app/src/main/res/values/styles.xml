@@ -9,4 +9,13 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="CustomButtonStyle" parent="Widget.AppCompat.Button">
+        <item name="android:textColor">#FFFDFD</item> <!-- 文本颜色 -->
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">17sp</item> <!-- 文本大小 -->
+        <item name="android:background">@drawable/button_style</item> <!-- 刚刚创建的Drawable选择器 -->
+        <!-- 其他属性可以根据需要添加 -->
+    </style>
+
+
 </resources>

@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">爱躺平</string>
+    <string name="粘贴兑奖">粘贴兑奖</string>
+    <string name="今日开奖">今日开奖</string>
+    <string name="排五">排五</string>
+    <string name="排列5兑奖">排列5兑奖</string>
+    <string name="七星彩">七星彩</string>
+    <string name="七星彩兑奖">七星彩兑奖</string>
+    <string name="大乐透">大乐透</string>
+    <string name="大乐透兑奖">大乐透兑奖</string>
+    <string name="双色球">双色球</string>
+    <string name="双色球兑奖">双色球兑奖</string>
+    <string name="快乐8">快乐8</string>
+    <string name="快乐8兑奖">快乐8兑奖</string>
 </resources>

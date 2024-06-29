@@ -15,7 +15,7 @@ public class CustomToast
         toast.show();
 
         // 创建并启动自定义定时器，关闭Toast
-        new CountDownTimer(durationMillis, 1000)
+        new CountDownTimer(durationMillis, 1500)
         { // 参数：总时长，间隔
             @Override
             public void onTick(long millisUntilFinished)
