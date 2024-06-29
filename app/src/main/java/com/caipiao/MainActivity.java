@@ -10,7 +10,10 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.annotation.RequiresApi;
 
 import com.caipiao.ReadFileStrCompareToLotteryData.ReadArrange5CompareData;
 import com.caipiao.ReadFileStrCompareToLotteryData.ReadHappy8CompareData;
@@ -31,7 +34,7 @@ import com.caipiao.ticket.TwoTone;
 import com.caipiao.tools.CustomToast;
 import com.caipiao.tools.OpenTicketToday;
 
-import androidx.annotation.RequiresApi;
+import java.util.Random;
 
 /**
  *彩票单注多买一注都是侮辱智商。
@@ -51,6 +54,9 @@ public class MainActivity extends Activity implements OnClickListener
             prizeClaim_sevenstarcolor_btn, prizeClaim_arrange5_btn,prizeClaim_Paste_btn;
     private ClipboardManager cm;
     private String copyContent, copyBallToFileStr;
+    LinearLayout linearLayout;
+    private Random random = new Random();
+    private int lastNumber = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -58,7 +64,9 @@ public class MainActivity extends Activity implements OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+       linearLayout = findViewById(R.id.ll_main);
         initUI();
+
     }
 
     private void initUI()
@@ -142,6 +150,7 @@ public class MainActivity extends Activity implements OnClickListener
             // 今天开奖
             String openTicketToday = new OpenTicketToday().openTicketToday();
             CustomToast.show(getApplicationContext(), openTicketToday, 800);
+            changeBackgroundPhoto();
         } else if (prizeClaim_happy8_btn == v)
         {
             // 快乐8比对
@@ -212,5 +221,39 @@ public class MainActivity extends Activity implements OnClickListener
     private void saveArrange5StrToFile()
     {
         new SaveArrange5StrToFile().saveArrange5StrToFile(this, copyBallToFileStr);
+    }
+
+    private void changeBackgroundPhoto() {
+        int newNumber = getNextUniqueRandom();
+    // 使用switch-case结构替换if-else，使代码更清晰
+    switch (newNumber) {
+        case 0:
+            linearLayout.setBackgroundResource(R.drawable.background1);
+            break;
+        case 1:
+            linearLayout.setBackgroundResource(R.drawable.background2);
+            break;
+        case 2:
+            linearLayout.setBackgroundResource(R.drawable.background3);
+            break;
+        default:
+            // 这里通常不会执行，但作为一个良好的编程习惯，处理意外情况
+            break;
+    }
+
+
+}
+    /**
+     * 生成一个与上一次选择不同的0到2之间的随机数。
+     * @return 新的随机数。
+     */
+    private int getNextUniqueRandom() {
+        int nextNumber;
+        do {
+            nextNumber = random.nextInt(3); // 生成0、1、2中的一个数
+        } while (nextNumber == lastNumber); // 如果和上次一样，就重新生成
+
+        lastNumber = nextNumber; // 更新上一次选择的数
+        return nextNumber;
     }
 }
