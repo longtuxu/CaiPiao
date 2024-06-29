@@ -252,7 +252,12 @@ public class MainActivity extends Activity implements OnClickListener
         do {
             nextNumber = random.nextInt(3); // 生成0、1、2中的一个数
         } while (nextNumber == lastNumber); // 如果和上次一样，就重新生成
-
+    /**
+     * do 关键字开始循环体。
+     * 大括号 {} 包围的循环体代码，这部分代码会先被执行。
+     * while ( 条件表达式 ); 判断是否继续循环。
+     * 如果条件表达式为真（true），则循环体再次执行；如果为假（false），则循环结束。
+     */
         lastNumber = nextNumber; // 更新上一次选择的数
         return nextNumber;
     }
