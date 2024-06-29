@@ -9,13 +9,42 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+     <!--————————————————————————    按钮样式   Start ————————————————————————-->
     <style name="CustomButtonStyle" parent="Widget.AppCompat.Button">
         <item name="android:textColor">#FFFDFD</item> <!-- 文本颜色 -->
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">17sp</item> <!-- 文本大小 -->
         <item name="android:background">@drawable/button_style</item> <!-- 刚刚创建的Drawable选择器 -->
+    </style>
+    <!--————————————————————————    按钮样式   END————————————————————————-->
+
+    <!--————————————————————————    文字title样式   Start ————————————————————————-->
+    <style name="CustomFuCaiStringStyle" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">#C6FF00</item> <!-- 文本颜色 -->
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">17sp</item> <!-- 文本大小 -->
         <!-- 其他属性可以根据需要添加 -->
     </style>
 
+    <style name="CustomTiCaiStringStyle" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">#18FFFF</item> <!-- 文本颜色 -->
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">17sp</item> <!-- 文本大小 -->
+    </style>
 
+    <style name="CustomJinRiKaiJianStringStyle" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">#FF6E40</item> <!-- 文本颜色 -->
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">17sp</item> <!-- 文本大小 -->
+    </style>
+    <!--————————————————————————    文字title样式   END ————————————————————————-->
+
+    <!--————————————————————————    文字内容样式   Start ————————————————————————-->
+    <style name="CustomContentStyle" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">#FFFDFD</item> <!-- 文本颜色 -->
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">17sp</item> <!-- 文本大小 -->
+    </style>
+
+    <!--————————————————————————    文字内容样式   END ————————————————————————-->
 </resources>

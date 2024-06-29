@@ -12,4 +12,9 @@
     <string name="双色球兑奖">双色球兑奖</string>
     <string name="快乐8">快乐8</string>
     <string name="快乐8兑奖">快乐8兑奖</string>
+    <string name="paste_prize_claim_title">粘贴兑奖</string>
+    <string name="enter_prize_code">请粘贴你的号码</string>
+    <string name="claim_prize">兑奖</string>
+    <string name="clear">清空</string>
+
 </resources>

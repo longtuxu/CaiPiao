@@ -21,7 +21,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/save_happy8_btn"
+                    android:id="@+id/prizeClaim_happy8_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/快乐8兑奖"
@@ -33,7 +33,8 @@
                     android:layout_height="match_parent"
                     android:gravity="right"
                     android:text="@string/快乐8"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    style="@style/CustomFuCaiStringStyle"/>
 
             </LinearLayout>
 
@@ -41,7 +42,8 @@
                 android:id="@+id/tv_show_happy8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                style="@style/CustomContentStyle"/>
         </LinearLayout>
 
         <LinearLayout
@@ -56,7 +58,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/save_twotone_btn"
+                    android:id="@+id/prizeClaim_twotone_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/双色球兑奖"
@@ -68,7 +70,8 @@
                     android:layout_height="match_parent"
                     android:gravity="right"
                     android:text="@string/双色球"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    style="@style/CustomFuCaiStringStyle"/>
 
             </LinearLayout>
 
@@ -76,7 +79,8 @@
                 android:id="@+id/tv_show_twotone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                style="@style/CustomContentStyle"/>
 
         </LinearLayout>
 
@@ -92,7 +96,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/save_superlotto_btn"
+                    android:id="@+id/prizeClaim_superlotto_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/大乐透兑奖"
@@ -104,14 +108,16 @@
                     android:layout_height="match_parent"
                     android:gravity="right"
                     android:text="@string/大乐透"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    style="@style/CustomTiCaiStringStyle"/>
             </LinearLayout>
 
             <TextView
                 android:id="@+id/tv_show_superlotto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                style="@style/CustomContentStyle"/>
         </LinearLayout>
 
         <LinearLayout
@@ -126,7 +132,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/save_sevenstarcolor_btn"
+                    android:id="@+id/prizeClaim_sevenstarcolor_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/七星彩兑奖"
@@ -138,14 +144,16 @@
                     android:layout_height="match_parent"
                     android:gravity="right"
                     android:text="@string/七星彩"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    style="@style/CustomTiCaiStringStyle"/>
             </LinearLayout>
 
             <TextView
                 android:id="@+id/tv_show_sevenstarcolor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                style="@style/CustomContentStyle"/>
         </LinearLayout>
 
         <LinearLayout
@@ -160,7 +168,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/save_arrange5_btn"
+                    android:id="@+id/prizeClaim_arrange5_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/排列5兑奖"
@@ -172,16 +180,45 @@
                     android:layout_height="match_parent"
                     android:gravity="right"
                     android:text="@string/排五"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    style="@style/CustomTiCaiStringStyle"/>
             </LinearLayout>
 
             <TextView
                 android:id="@+id/tv_show_arrange5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                style="@style/CustomContentStyle"/>
         </LinearLayout>
 
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/prizeClaim_Paste_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/粘贴兑奖"
+                    style="@style/CustomButtonStyle"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="right"
+                    android:text=""
+                    android:textSize="20sp" />
+            </LinearLayout>
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -195,40 +232,15 @@
                 android:layout_height="match_parent"
                 android:gravity="right"
                 android:text="@string/今日开奖"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                style="@style/CustomJinRiKaiJianStringStyle"/>
 
             <TextView
                 android:id="@+id/todayTicket"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/paste_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/粘贴兑奖"
-                    style="@style/CustomButtonStyle"/>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="right"
-                    android:text=""
-                    android:textSize="20sp" />
-            </LinearLayout>
+                android:textSize="16sp"
+                style="@style/CustomContentStyle"/>
         </LinearLayout>
 
     </LinearLayout>

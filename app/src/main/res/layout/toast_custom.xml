@@ -1,0 +1,24 @@
+<!-- res/layout/toast_custom.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/toast_layout_root"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="10dp"
+    android:background="@drawable/button_style"> <!-- 自定义背景drawable -->
+
+    <ImageView
+        android:id="@+id/image_icon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@mipmap/btn_star_on_pressed_holo_dark" /> <!-- 图标示例 -->
+
+    <TextView
+        android:id="@+id/text_view_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:layout_marginLeft="10dp"
+        android:textSize="16sp" />
+
+</LinearLayout>
