@@ -1,5 +1,6 @@
 package com.caipiao.util;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
@@ -18,7 +19,7 @@ public class BallUtils
             allBalls.add(i);
         }
         // 打乱顺序
-        Collections.shuffle(allBalls);
+        Collections.shuffle(allBalls, new SecureRandom());
         // 遍历所有球数
         ArrayList<Integer> selectedBalls = new ArrayList<>();
         for (int i = 0; i < size; i++)
