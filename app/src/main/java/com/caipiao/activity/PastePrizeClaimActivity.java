@@ -71,7 +71,7 @@ public class PastePrizeClaimActivity extends Activity {
                             CustomToast.show(getApplicationContext(), "请在第一行输入彩种名称，第二行号码以 、和 + 连接", 800);
                         }
                     } else {
-                        CustomToast.show(getApplicationContext(), "请在第一行输入彩种名称，第二行号码以 、和 + 连接", 800);
+                        CustomToast.show(getApplicationContext(), "格式错误：\n\n第一行仅输入彩种名称\n\n号码行以 、和 + 连接，不含中文", 800);
                     }
                 }
             }
@@ -86,7 +86,7 @@ public class PastePrizeClaimActivity extends Activity {
         if (result.size() != 0) {
             return result.get(0);
         }
-        return null;
+        return "";
     }
 
     /**
@@ -99,8 +99,8 @@ public class PastePrizeClaimActivity extends Activity {
         List<String> numberLines = new ArrayList<>();
         String[] lines = text.split("\\n"); // 假设文本是以换行符分隔的多行
 
-        // 正则表达式，用于匹配以数字开头的行
-        Pattern pattern = Pattern.compile("^[0-9].*");
+        // 创建Pattern对象，匹配数字开头但不包含中文的行
+        Pattern pattern = Pattern.compile("^\\d+(?!.*\\p{IsHan})");
 
         for (String line : lines) {
             Matcher matcher = pattern.matcher(line.trim()); // 去除前后空白再匹配
