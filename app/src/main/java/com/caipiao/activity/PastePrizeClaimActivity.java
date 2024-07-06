@@ -3,8 +3,6 @@ package com.caipiao.activity;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -17,6 +15,7 @@ import com.caipiao.ReadPasteStrCompareToLotteryData.PastePrizeClaimHappy8Data;
 import com.caipiao.ReadPasteStrCompareToLotteryData.PastePrizeClaimSevenStarData;
 import com.caipiao.ReadPasteStrCompareToLotteryData.PastePrizeClaimSuperLottoData;
 import com.caipiao.ReadPasteStrCompareToLotteryData.PastePrizeClaimTwoToneData;
+import com.caipiao.tools.CustomToast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,11 +30,6 @@ public class PastePrizeClaimActivity extends Activity {
         setContentView(R.layout.activity_paste_prize_claim);
 
         EditText editTextCode = findViewById(R.id.editTextCode);
-
-
-
-
-
 
         /**
          * 清空按钮
@@ -60,23 +54,26 @@ public class PastePrizeClaimActivity extends Activity {
             @Override
             public void onClick(View v) {
                 prizeCode = editTextCode.getText().toString();
-                String resultEditTextStr = deleteEditTextNotNeedLine(prizeCode);
-                if (prizeCode.contains("双色球")) {
-                    new PastePrizeClaimTwoToneData().pastePrizeClaimTwoToneData(getApplicationContext(), resultEditTextStr);
-                } else if (prizeCode.contains("大乐透")) {
-                    new PastePrizeClaimSuperLottoData().pastePrizeClaimTwoToneData(getApplicationContext(), resultEditTextStr);
-                } else if (prizeCode.contains("快乐8")) {
-                    new PastePrizeClaimHappy8Data().pastePrizeClaimTwoToneData(getApplicationContext(), resultEditTextStr);
-                } else if (prizeCode.contains("七星彩")) {
-                    new PastePrizeClaimSevenStarData().pastePrizeClaimTwoToneData(getApplicationContext(), resultEditTextStr);
-                } else if (prizeCode.contains("排列五")) {
-                    new PastePrizeClaimArrange5Data().pastePrizeClaimTwoToneData(getApplicationContext(), resultEditTextStr);
-                } else {
-                    System.out.println("输入的奖品码不符合格式");
+                if (!prizeCode.isEmpty()) {
+                    String resultEditTextStr = deleteEditTextNotNeedLine(prizeCode);
+                    if (resultEditTextStr != null && !resultEditTextStr.isEmpty()) {
+                        if (prizeCode.contains("双色球")) {
+                            new PastePrizeClaimTwoToneData().pastePrizeClaimTwoToneData(getApplicationContext(), resultEditTextStr);
+                        } else if (prizeCode.contains("大乐透")) {
+                            new PastePrizeClaimSuperLottoData().pastePrizeClaimTwoToneData(getApplicationContext(), resultEditTextStr);
+                        } else if (prizeCode.contains("快乐8")) {
+                            new PastePrizeClaimHappy8Data().pastePrizeClaimTwoToneData(getApplicationContext(), resultEditTextStr);
+                        } else if (prizeCode.contains("七星彩")) {
+                            new PastePrizeClaimSevenStarData().pastePrizeClaimTwoToneData(getApplicationContext(), resultEditTextStr);
+                        } else if (prizeCode.contains("排列五")) {
+                            new PastePrizeClaimArrange5Data().pastePrizeClaimTwoToneData(getApplicationContext(), resultEditTextStr);
+                        } else {
+                            CustomToast.show(getApplicationContext(), "请在第一行输入彩种名称，第二行号码以 、和 + 连接", 800);
+                        }
+                    } else {
+                        CustomToast.show(getApplicationContext(), "请在第一行输入彩种名称，第二行号码以 、和 + 连接", 800);
+                    }
                 }
-
-                // 示例：简单弹出一个吐司消息显示输入的奖品码
-//                CustomToast.show(getApplicationContext(), "已保存", 800);
             }
         });
     }
@@ -86,15 +83,15 @@ public class PastePrizeClaimActivity extends Activity {
      */
     private String deleteEditTextNotNeedLine(String editTextStr) {
         List<String> result = extractNumberLines(editTextStr);
-//        String resultStr = "";
-//        for (String line : result) {
-//            System.out.println(line);
-//        }
-        return result.get(0);
+        if (result.size() != 0) {
+            return result.get(0);
+        }
+        return null;
     }
 
     /**
      * 从给定的文本中提取以数字开头的行。
+     *
      * @param text 包含多行文本的字符串
      * @return 只包含以数字开头的行的列表
      */
@@ -122,7 +119,7 @@ public class PastePrizeClaimActivity extends Activity {
             View v = getCurrentFocus();
             if (v instanceof EditText) {
                 // 如果当前焦点在EditText上，则隐藏键盘
-                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                 if (imm != null) {
                     imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
                 }
