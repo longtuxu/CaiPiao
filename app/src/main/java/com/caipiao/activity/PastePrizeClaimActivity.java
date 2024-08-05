@@ -71,6 +71,7 @@ public class PastePrizeClaimActivity extends Activity {
                             CustomToast.show(getApplicationContext(), "请在第一行输入彩种名称，第二行号码以 、和 + 连接", 800);
                         }
                     } else {
+                        //
                         CustomToast.show(getApplicationContext(), "格式错误：\n\n第一行仅输入彩种名称\n\n号码行以 、和 + 连接，不含中文", 800);
                     }
                 }
