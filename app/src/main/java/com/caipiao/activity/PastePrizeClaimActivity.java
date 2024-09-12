@@ -22,8 +22,8 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/***
- *
+/**
+ * master提交了哦
  */
 public class PastePrizeClaimActivity extends Activity {
     String prizeCode;
