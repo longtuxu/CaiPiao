@@ -23,7 +23,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /***
- * 兑奖页面 主分支修改了提交了
+ * 兑什么页面 主分支修改了提交了
  */
 public class PastePrizeClaimActivity extends Activity {
     String prizeCode;
