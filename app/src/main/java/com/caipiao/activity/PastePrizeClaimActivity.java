@@ -22,6 +22,9 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/***
+ *
+ */
 public class PastePrizeClaimActivity extends Activity {
     String prizeCode;
 
@@ -71,7 +74,6 @@ public class PastePrizeClaimActivity extends Activity {
                             CustomToast.show(getApplicationContext(), "请在第一行输入彩种名称，第二行号码以 、和 + 连接", 800);
                         }
                     } else {
-                        //提示信息
                         CustomToast.show(getApplicationContext(), "格式错误：\n\n第一行仅输入彩种名称\n\n号码行以 、和 + 连接，不含中文", 800);
                     }
                 }
