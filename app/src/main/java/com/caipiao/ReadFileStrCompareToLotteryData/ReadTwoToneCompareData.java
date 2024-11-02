@@ -34,8 +34,11 @@ public class ReadTwoToneCompareData
     public void readTwoToneCompareData(final Context context)
     {
         //读取保存的文件字符串号码
-        File directory = new File(Environment.getExternalStoragePublicDirectory(
-                Environment.DIRECTORY_DOCUMENTS), "双色球");
+        File directory = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
+            directory = new File(Environment.getExternalStoragePublicDirectory(
+                    Environment.DIRECTORY_DOCUMENTS), "双色球");
+        }
         String fileName = "双色球保存.txt";
 
         File file = new File(directory, fileName);

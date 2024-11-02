@@ -47,4 +47,8 @@
     </style>
 
     <!--————————————————————————    文字内容样式   END ————————————————————————-->
+
+    <style name="CustomCardViewStyle" parent="Widget.AppCompat.TextView">
+        <item name="android:background">@drawable/button_style</item> <!-- 刚刚创建的Drawable选择器 -->
+    </style>
 </resources>

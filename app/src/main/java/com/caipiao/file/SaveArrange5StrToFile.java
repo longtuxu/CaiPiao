@@ -37,8 +37,11 @@ public class SaveArrange5StrToFile
         }
 
         // 定义文件路径和名称
-        File directory = new File(Environment.getExternalStoragePublicDirectory(
-                Environment.DIRECTORY_DOCUMENTS), "排列5");
+        File directory = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
+            directory = new File(Environment.getExternalStoragePublicDirectory(
+                    Environment.DIRECTORY_DOCUMENTS), "排列5");
+        }
         String fileName = "排列5保存.txt";
 
         try

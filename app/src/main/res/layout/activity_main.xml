@@ -1,249 +1,358 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true">
 
     <LinearLayout
         android:id="@+id/ll_main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="@mipmap/background"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="16dp">
 
-        <LinearLayout
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:orientation="vertical">
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                style="@style/CustomCardViewStyle"
+                android:padding="16dp">
 
                 <Button
-                    android:id="@+id/prizeClaim_happy8_btn"
+                    android:id="@+id/fetchButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/快乐8兑奖"
+                    android:text="获取开奖数据"
+                    android:layout_marginTop="10dp"
+                    style="@style/CustomButtonStyle"/>
+
+                <Button
+                    android:id="@+id/analyzeButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="分析号码"
+                    android:layout_marginTop="50dp"
                     style="@style/CustomButtonStyle"/>
 
                 <TextView
-                    android:id="@+id/tv_happy8"
+                    android:id="@+id/resultTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:text="结果将显示在这里"
+                    android:textSize="16sp"
+                    style="@style/CustomContentStyle"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                style="@style/CustomCardViewStyle"
+                android:padding="16dp">
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="40dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/prizeClaim_happy8_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/快乐8兑奖"
+                        style="@style/CustomButtonStyle"/>
+
+                    <TextView
+                        android:id="@+id/tv_happy8"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="right"
+                        android:text="@string/快乐8"
+                        android:textSize="20sp"
+                        style="@style/CustomFuCaiStringStyle"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_show_happy8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    style="@style/CustomContentStyle"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                style="@style/CustomCardViewStyle"
+
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/prizeClaim_twotone_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/双色球兑奖"
+                        style="@style/CustomButtonStyle"/>
+
+                    <TextView
+                        android:id="@+id/tv_twotone"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="right"
+                        android:text="@string/双色球"
+                        android:textSize="20sp"
+                        style="@style/CustomFuCaiStringStyle"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_show_twotone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    style="@style/CustomContentStyle"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                style="@style/CustomCardViewStyle"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/prizeClaim_superlotto_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/大乐透兑奖"
+                        style="@style/CustomButtonStyle"/>
+
+                    <TextView
+                        android:id="@+id/tv_superlotto"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="right"
+                        android:text="@string/大乐透"
+                        android:textSize="20sp"
+                        style="@style/CustomTiCaiStringStyle"/>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_show_superlotto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    style="@style/CustomContentStyle"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                style="@style/CustomCardViewStyle"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/prizeClaim_sevenstarcolor_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/七星彩兑奖"
+                        style="@style/CustomButtonStyle"/>
+
+                    <TextView
+                        android:id="@+id/tv_sevenstarcolor"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="right"
+                        android:text="@string/七星彩"
+                        android:textSize="20sp"
+                        style="@style/CustomTiCaiStringStyle"/>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_show_sevenstarcolor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    style="@style/CustomContentStyle"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                style="@style/CustomCardViewStyle"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/prizeClaim_arrange5_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/排列5兑奖"
+                        style="@style/CustomButtonStyle"/>
+
+                    <TextView
+                        android:id="@+id/tv_arrange5"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="right"
+                        android:text="@string/排五"
+                        android:textSize="20sp"
+                        style="@style/CustomTiCaiStringStyle"/>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_show_arrange5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    style="@style/CustomContentStyle"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                style="@style/CustomCardViewStyle"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/prizeClaim_Paste_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/粘贴兑奖"
+                        style="@style/CustomButtonStyle"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="right"
+                        android:text=""
+                        android:textSize="20sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                style="@style/CustomCardViewStyle"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/tv_opentickettoday"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:gravity="right"
-                    android:text="@string/快乐8"
+                    android:text="@string/今日开奖"
                     android:textSize="20sp"
-                    style="@style/CustomFuCaiStringStyle"/>
-
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/tv_show_happy8"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="16sp"
-                style="@style/CustomContentStyle"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/prizeClaim_twotone_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/双色球兑奖"
-                    style="@style/CustomButtonStyle"/>
+                    style="@style/CustomJinRiKaiJianStringStyle"/>
 
                 <TextView
-                    android:id="@+id/tv_twotone"
+                    android:id="@+id/todayTicket"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="right"
-                    android:text="@string/双色球"
-                    android:textSize="20sp"
-                    style="@style/CustomFuCaiStringStyle"/>
-
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/tv_show_twotone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="16sp"
-                style="@style/CustomContentStyle"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/prizeClaim_superlotto_btn"
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/大乐透兑奖"
-                    style="@style/CustomButtonStyle"/>
-
-                <TextView
-                    android:id="@+id/tv_superlotto"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="right"
-                    android:text="@string/大乐透"
-                    android:textSize="20sp"
-                    style="@style/CustomTiCaiStringStyle"/>
+                    android:textSize="16sp"
+                    style="@style/CustomContentStyle"/>
             </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
-            <TextView
-                android:id="@+id/tv_show_superlotto"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="16sp"
-                style="@style/CustomContentStyle"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/prizeClaim_sevenstarcolor_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/七星彩兑奖"
-                    style="@style/CustomButtonStyle"/>
-
-                <TextView
-                    android:id="@+id/tv_sevenstarcolor"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="right"
-                    android:text="@string/七星彩"
-                    android:textSize="20sp"
-                    style="@style/CustomTiCaiStringStyle"/>
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/tv_show_sevenstarcolor"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="16sp"
-                style="@style/CustomContentStyle"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/prizeClaim_arrange5_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/排列5兑奖"
-                    style="@style/CustomButtonStyle"/>
-
-                <TextView
-                    android:id="@+id/tv_arrange5"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="right"
-                    android:text="@string/排五"
-                    android:textSize="20sp"
-                    style="@style/CustomTiCaiStringStyle"/>
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/tv_show_arrange5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="16sp"
-                style="@style/CustomContentStyle"/>
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/prizeClaim_Paste_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/粘贴兑奖"
-                    style="@style/CustomButtonStyle"/>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="right"
-                    android:text=""
-                    android:textSize="20sp" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/tv_opentickettoday"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="right"
-                android:text="@string/今日开奖"
-                android:textSize="20sp"
-                style="@style/CustomJinRiKaiJianStringStyle"/>
-
-            <TextView
-                android:id="@+id/todayTicket"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="16sp"
-                style="@style/CustomContentStyle"/>
-        </LinearLayout>
 
     </LinearLayout>
 
-</LinearLayout>
+</ScrollView>

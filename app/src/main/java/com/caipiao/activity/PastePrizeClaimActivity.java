@@ -9,13 +9,13 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.caipiao.R;
 import com.caipiao.ReadPasteStrCompareToLotteryData.PastePrizeClaimArrange5Data;
 import com.caipiao.ReadPasteStrCompareToLotteryData.PastePrizeClaimHappy8Data;
 import com.caipiao.ReadPasteStrCompareToLotteryData.PastePrizeClaimSevenStarData;
 import com.caipiao.ReadPasteStrCompareToLotteryData.PastePrizeClaimSuperLottoData;
 import com.caipiao.ReadPasteStrCompareToLotteryData.PastePrizeClaimTwoToneData;
 import com.caipiao.tools.CustomToast;
+import com.myfirstdemotogithub.R;
 
 import java.util.ArrayList;
 import java.util.List;

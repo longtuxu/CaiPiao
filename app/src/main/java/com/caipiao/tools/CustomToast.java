@@ -1,23 +1,21 @@
 package com.caipiao.tools;
 
 import android.content.Context;
-import android.os.CountDownTimer;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.caipiao.R;
+import com.myfirstdemotogithub.R;
+
 
 /**
  * 自定义Toast吐司，设置时长
  */
-public class CustomToast
-{
+public class CustomToast {
 
-    public static void show(Context context, String message, int durationMillis)
-    {
+    public static void show(Context context, String message, int durationMillis) {
         // 获取LayoutInflater服务
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
