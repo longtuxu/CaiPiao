@@ -19,7 +19,7 @@
         </activity>
 
         <activity
-            android:name=".activity.PastePrizeClaimActivity"
+            android:name="com.caipiao.activity.PastePrizeClaimActivity"
             android:label="Paste Prize Claim Activity">
             <!-- 如果该Activity需要直接从外部启动，可能需要添加intent-filter -->
         </activity>

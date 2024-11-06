@@ -45,7 +45,9 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -172,9 +174,35 @@ public class MainActivity extends Activity implements OnClickListener {
                     }
 
                     File file = new File(directory, "分析双色球.txt");
-                    FileWriter writer = new FileWriter(file, true);
-                    writer.write(formatLotteryResult(openSet) + "\n");
-                    writer.close();
+//                    FileWriter writer = new FileWriter(file, true);
+
+                    String newContent = formatLotteryResult(openSet); // 假设 openSet 是你已经定义好的数据
+                    try {
+                        // 1. 读取现有内容
+                        StringBuilder existingContent = new StringBuilder();
+                        if (file.exists()) {
+                            try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+                                String line;
+                                while ((line = reader.readLine()) != null) {
+                                    existingContent.append(line).append("\n");
+                                }
+                            }
+                        }
+
+                        // 2. 构建新的内容
+                        StringBuilder newFileContent = new StringBuilder();
+                        newFileContent.append(newContent).append("\n").append(existingContent);
+
+                        // 3. 写入新的内容
+
+                        try (FileWriter writer = new FileWriter(file)) {
+                            writer.write(newFileContent.toString());
+                        }
+
+                        System.out.println("内容已成功写入文件的第一行");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
 
                     runOnUiThread(new Runnable() {
                         @Override
@@ -237,9 +265,6 @@ public class MainActivity extends Activity implements OnClickListener {
                     try {
                         historicalData = LotteryAnalyzer.readRecentHistoricalData(file.getAbsolutePath(), 12);
                         List<String> combinations = LotteryAnalyzer.generateCombinations(historicalData, 2);
-                        for (String combination : combinations) {
-                            System.out.println("结果："+combination);
-                        }
 
                         StringBuilder result = new StringBuilder();
                         for (int i = 0; i < combinations.size(); i++) {
