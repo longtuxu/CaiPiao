@@ -127,12 +127,12 @@ public class LotteryAnalyzer {
      * @param numCombinations 生成的组合数量
      * @return 号码组合列表
      */
-    public static List<String> generateCombinations(List<List<String>> historicalData, int numCombinations) {
+    public static List<String> getBall(List<List<String>> historicalData, int numCombinations) {
         try {
             Map<Integer, Integer> redBallFrequency = calculateRedBallFrequency(historicalData);
 
-            List<Integer> hotRedNumbers = getTopNumbers(redBallFrequency, 10);
-            List<Integer> coldRedNumbers = getBottomNumbers(redBallFrequency, 5);
+            List<Integer> hotRedNumbers = getTopNumbers(redBallFrequency, 8);
+            List<Integer> coldRedNumbers = getBottomNumbers(redBallFrequency, 2);
             List<Integer> remainingRedNumbers = getRemainingNumbers(redBallFrequency, hotRedNumbers, coldRedNumbers);
 
             List<String> formattedCombinations = new ArrayList<>();
@@ -144,12 +144,12 @@ public class LotteryAnalyzer {
 
             for (int i = 0; i < numCombinations; i++) {
                 // 检查列表大小是否足够
-                if (hotRedNumbers.size() < 3 || coldRedNumbers.size() < 1 || remainingRedNumbers.size() < 2) {
+                if (hotRedNumbers.size() < 4 || coldRedNumbers.size() < 0 || remainingRedNumbers.size() < 2) {
                     throw new IllegalStateException("Not enough numbers to generate combinations");
                 }
 
-                sample(random, hotRedNumbers, 3, combination, 0);
-                sample(random, coldRedNumbers, 1, combination, 3);
+                sample(random, hotRedNumbers, 4, combination, 0);
+                sample(random, coldRedNumbers, 0, combination, 3);
                 sample(random, remainingRedNumbers, 2, combination, 4);
 
                 // 直接随机选择蓝球

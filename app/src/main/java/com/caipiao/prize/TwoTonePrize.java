@@ -5,24 +5,24 @@ package com.caipiao.prize;
  */
 public class TwoTonePrize
 {
-    public String checkPrizeLevel(int topFive, int lastTwo)
+    public String checkPrizeLevel(int topSix, int lastOne)
     {
-        if (topFive == 6 && lastTwo == 1)
+        if (topSix == 6 && lastOne == 1)
         {
             return "一等奖"; // 一等奖
-        } else if (topFive == 6)
+        } else if (topSix == 6)
         {
             return "二等奖"; // 二等奖
-        } else if (topFive == 5 && lastTwo == 1)
+        } else if (topSix == 5 && lastOne == 1)
         {
             return "三等奖 3000元"; // 三等奖
-        } else if (topFive == 5 && lastTwo == 0 || topFive == 4 && lastTwo == 1)
+        } else if (topSix == 5 && lastOne == 0 || topSix == 4 && lastOne == 1)
         {
             return "四等奖 200元"; // 四等奖
-        } else if (topFive == 4 && lastTwo == 0 || topFive == 3 && lastTwo == 1)
+        } else if (topSix == 4 && lastOne == 0 || topSix == 3 && lastOne == 1)
         {
             return "五等奖 10元"; // 五等奖
-        } else if (topFive == 2 && lastTwo == 1 || topFive == 1 && lastTwo == 1 || topFive == 0 && lastTwo == 1)
+        } else if (topSix == 2 && lastOne == 1 || topSix == 1 && lastOne == 1 || topSix == 0 && lastOne == 1)
         {
             return "六等奖 5元"; // 六等奖
         } else

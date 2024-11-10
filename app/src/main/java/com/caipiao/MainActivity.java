@@ -264,11 +264,11 @@ public class MainActivity extends Activity implements OnClickListener {
                 if (file.exists()) {
                     try {
                         historicalData = LotteryAnalyzer.readRecentHistoricalData(file.getAbsolutePath(), 12);
-                        List<String> combinations = LotteryAnalyzer.generateCombinations(historicalData, 2);
+                        List<String> ballStr = LotteryAnalyzer.getBall(historicalData, 2);
 
                         StringBuilder result = new StringBuilder();
-                        for (int i = 0; i < combinations.size(); i++) {
-                            result.append("双色球 \n\n").append(combinations.get(i)).append("\n\n\n");
+                        for (int i = 0; i < ballStr.size(); i++) {
+                            result.append("双色球 \n\n").append(ballStr.get(i)).append("\n\n\n");
                         }
 
                         runOnUiThread(() -> resultTextView.setText(result.toString()));
