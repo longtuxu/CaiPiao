@@ -22,12 +22,14 @@ public class LotteryAnalyzer {
         List<List<String>> data = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
             String line;
-            while ((line = br.readLine()) != null) {
+            int lineCount = 0; // 计数器，用于跟踪读取的行数
+            while ((line = br.readLine()) != null && lineCount < 12) {
                 List<String> numbers = new ArrayList<>();
                 for (String numStr : line.split("、")) {
                     numbers.add(numStr);
                 }
                 data.add(0, numbers); // 将新读取的数据插入到列表的开头
+                lineCount++; // 增加计数器
             }
         }
 
@@ -131,8 +133,8 @@ public class LotteryAnalyzer {
         try {
             Map<Integer, Integer> redBallFrequency = calculateRedBallFrequency(historicalData);
 
-            List<Integer> hotRedNumbers = getTopNumbers(redBallFrequency, 8);
-            List<Integer> coldRedNumbers = getBottomNumbers(redBallFrequency, 2);
+            List<Integer> hotRedNumbers = getTopNumbers(redBallFrequency, 13);
+            List<Integer> coldRedNumbers = getBottomNumbers(redBallFrequency, 3);
             List<Integer> remainingRedNumbers = getRemainingNumbers(redBallFrequency, hotRedNumbers, coldRedNumbers);
 
             List<String> formattedCombinations = new ArrayList<>();
@@ -144,13 +146,16 @@ public class LotteryAnalyzer {
 
             for (int i = 0; i < numCombinations; i++) {
                 // 检查列表大小是否足够
-                if (hotRedNumbers.size() < 4 || coldRedNumbers.size() < 0 || remainingRedNumbers.size() < 2) {
+                if (hotRedNumbers.size() < 5 || coldRedNumbers.size() < 1 ) {
+                    System.out.println("hotRedNumbers size: " + hotRedNumbers.size());
+                    System.out.println("coldRedNumbers size: " + coldRedNumbers.size());
+                    System.out.println("remainingRedNumbers size: " + remainingRedNumbers.size());
                     throw new IllegalStateException("Not enough numbers to generate combinations");
                 }
 
-                sample(random, hotRedNumbers, 4, combination, 0);
-                sample(random, coldRedNumbers, 0, combination, 3);
-                sample(random, remainingRedNumbers, 2, combination, 4);
+                sample(random, hotRedNumbers, 5, combination, 0);
+                sample(random, coldRedNumbers, 1, combination, 5);
+//                sample(random, remainingRedNumbers, 1, combination, 5);
 
                 // 直接随机选择蓝球
                 int blueBall= random.nextInt(16) + 1;
@@ -203,7 +208,7 @@ public class LotteryAnalyzer {
 
     private static void sample(Random random, List<Integer> list, int k, Integer[] result, int offset) {
         if (k > list.size()) {
-            throw new IllegalArgumentException("Sample size exceeds list size");
+            throw new IllegalArgumentException("抽取的样本大小超过了列表的实际大小");
         }
         for (int i = 0; i < k; i++) {
             int index = random.nextInt(list.size());
@@ -244,7 +249,7 @@ public class LotteryAnalyzer {
      */
     private static List<Integer> sample(Random random, List<Integer> list, int k) {
         if (k > list.size()) {
-            throw new IllegalArgumentException("Sample size exceeds list size");
+            throw new IllegalArgumentException("抽取的样本大小超过了列表的实际大小");
         }
         List<Integer> result = new ArrayList<>(k);
         for (int i = 0; i < k; i++) {

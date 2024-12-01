@@ -264,7 +264,7 @@ public class MainActivity extends Activity implements OnClickListener {
                 if (file.exists()) {
                     try {
                         historicalData = LotteryAnalyzer.readRecentHistoricalData(file.getAbsolutePath(), 12);
-                        List<String> ballStr = LotteryAnalyzer.getBall(historicalData, 2);
+                        List<String> ballStr = LotteryAnalyzer.getBall(historicalData, 1);
 
                         StringBuilder result = new StringBuilder();
                         for (int i = 0; i < ballStr.size(); i++) {
