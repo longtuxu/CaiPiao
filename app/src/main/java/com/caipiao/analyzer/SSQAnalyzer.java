@@ -9,7 +9,12 @@ import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 
-public class LotteryAnalyzer {
+/**
+ * 双色球出球频率分析
+ *
+ * 从最近12期历史开奖中选号，选热5冷1，生成组合
+ */
+public class SSQAnalyzer {
 
     /**
      * 读取最近N次的历史数据

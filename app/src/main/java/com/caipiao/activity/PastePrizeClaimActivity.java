@@ -23,7 +23,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /***
- *  1.0.1 版本提交哦了
+ *  粘贴兑奖--主页
+ *
+ *  粘贴检测买的彩票中奖情况
  */
 public class PastePrizeClaimActivity extends Activity {
     String prizeCode;

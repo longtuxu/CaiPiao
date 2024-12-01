@@ -26,7 +26,7 @@ import com.caipiao.ReadFileStrCompareToLotteryData.ReadSevenStarColorCompareData
 import com.caipiao.ReadFileStrCompareToLotteryData.ReadSuperLottoCompareData;
 import com.caipiao.ReadFileStrCompareToLotteryData.ReadTwoToneCompareData;
 import com.caipiao.activity.PastePrizeClaimActivity;
-import com.caipiao.analyzer.LotteryAnalyzer;
+import com.caipiao.analyzer.SSQAnalyzer;
 import com.caipiao.file.SaveArrange5StrToFile;
 import com.caipiao.file.SaveHappy8StrToFile;
 import com.caipiao.file.SaveSevenStarColorStrToFile;
@@ -263,8 +263,8 @@ public class MainActivity extends Activity implements OnClickListener {
 
                 if (file.exists()) {
                     try {
-                        historicalData = LotteryAnalyzer.readRecentHistoricalData(file.getAbsolutePath(), 12);
-                        List<String> ballStr = LotteryAnalyzer.getBall(historicalData, 1);
+                        historicalData = SSQAnalyzer.readRecentHistoricalData(file.getAbsolutePath(), 12);
+                        List<String> ballStr = SSQAnalyzer.getBall(historicalData, 1);
 
                         StringBuilder result = new StringBuilder();
                         for (int i = 0; i < ballStr.size(); i++) {
