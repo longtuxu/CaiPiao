@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">爱躺平</string>
+    <string name="app_name">时序预测</string>
     <string name="粘贴兑奖">粘贴兑奖</string>
     <string name="今日开奖">今日开奖</string>
     <string name="排五">排五</string>
@@ -16,5 +16,8 @@
     <string name="enter_prize_code">请粘贴你的号码</string>
     <string name="claim_prize">兑奖</string>
     <string name="clear">清空</string>
+    <string name="获取开奖数据">获取开奖数据</string>
+    <string name="分析号码">分析号码</string>
+    <string name="结果将显示在这里">结果将显示在这里</string>
 
 </resources>
