@@ -9,7 +9,6 @@
         android:id="@+id/ll_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@mipmap/background"
         android:orientation="vertical"
         android:padding="16dp">
 
@@ -125,7 +124,7 @@
                         android:gravity="right"
                         android:text="@string/快乐8"
                         android:textSize="20sp"
-                        style="@style/CustomFuCaiStringStyle"/>
+                        style="@style/CustomContentStyle"/>
 
                 </LinearLayout>
 
@@ -172,7 +171,7 @@
                         android:gravity="right"
                         android:text="@string/双色球"
                         android:textSize="20sp"
-                        style="@style/CustomFuCaiStringStyle"/>
+                        style="@style/CustomContentStyle"/>
 
                 </LinearLayout>
 
@@ -218,7 +217,7 @@
                         android:gravity="right"
                         android:text="@string/大乐透"
                         android:textSize="20sp"
-                        style="@style/CustomTiCaiStringStyle"/>
+                        style="@style/CustomContentStyle"/>
                 </LinearLayout>
 
                 <TextView
@@ -263,7 +262,7 @@
                         android:gravity="right"
                         android:text="@string/七星彩"
                         android:textSize="20sp"
-                        style="@style/CustomTiCaiStringStyle"/>
+                        style="@style/CustomContentStyle"/>
                 </LinearLayout>
 
                 <TextView
@@ -308,7 +307,7 @@
                         android:gravity="right"
                         android:text="@string/排五"
                         android:textSize="20sp"
-                        style="@style/CustomTiCaiStringStyle"/>
+                        style="@style/CustomContentStyle"/>
                 </LinearLayout>
 
                 <TextView
@@ -341,7 +340,7 @@
                     android:gravity="right"
                     android:text="@string/今日开奖"
                     android:textSize="20sp"
-                    style="@style/CustomJinRiKaiJianStringStyle"/>
+                    style="@style/CustomContentStyle"/>
 
                 <TextView
                     android:id="@+id/todayTicket"

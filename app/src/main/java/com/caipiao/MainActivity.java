@@ -407,9 +407,6 @@ public class MainActivity extends Activity implements OnClickListener {
             case 1:
                 linearLayout.setBackgroundResource(R.drawable.background2);
                 break;
-            case 2:
-                linearLayout.setBackgroundResource(R.drawable.background3);
-                break;
             default:
                 // 这里通常不会执行，但作为一个良好的编程习惯，处理意外情况
                 break;
