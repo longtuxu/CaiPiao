@@ -174,7 +174,6 @@ public class MainActivity extends Activity implements OnClickListener {
                     }
 
                     File file = new File(directory, "分析双色球.txt");
-//                    FileWriter writer = new FileWriter(file, true);
 
                     String newContent = formatLotteryResult(openSet); // 假设 openSet 是你已经定义好的数据
                     try {
@@ -189,14 +188,17 @@ public class MainActivity extends Activity implements OnClickListener {
                             }
                         }
 
-                        // 2. 构建新的内容
-                        StringBuilder newFileContent = new StringBuilder();
-                        newFileContent.append(newContent).append("\n").append(existingContent);
+                        // 2. 检查第一行是否与新内容一致
+                        String firstLine = existingContent.toString().split("\n", 2)[0];
+                        if (!firstLine.equals(newContent)) {
+                            // 3. 构建新的内容
+                            StringBuilder newFileContent = new StringBuilder();
+                            newFileContent.append(newContent).append("\n").append(existingContent);
 
-                        // 3. 写入新的内容
-
-                        try (FileWriter writer = new FileWriter(file)) {
-                            writer.write(newFileContent.toString());
+                            // 4. 写入新的内容
+                            try (FileWriter writer = new FileWriter(file)) {
+                                writer.write(newFileContent.toString());
+                            }
                         }
 
                         System.out.println("内容已成功写入文件的第一行");
@@ -221,6 +223,7 @@ public class MainActivity extends Activity implements OnClickListener {
                 }
             }
         }).start();
+
     }
 
     /**
