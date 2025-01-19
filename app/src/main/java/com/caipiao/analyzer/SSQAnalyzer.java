@@ -138,8 +138,8 @@ public class SSQAnalyzer {
         try {
             Map<Integer, Integer> redBallFrequency = calculateRedBallFrequency(historicalData);
 
-            List<Integer> hotRedNumbers = getTopNumbers(redBallFrequency, 13);
-            List<Integer> coldRedNumbers = getBottomNumbers(redBallFrequency, 3);
+            List<Integer> hotRedNumbers = getTopNumbers(redBallFrequency, 20);
+            List<Integer> coldRedNumbers = getBottomNumbers(redBallFrequency, 5);
             List<Integer> remainingRedNumbers = getRemainingNumbers(redBallFrequency, hotRedNumbers, coldRedNumbers);
 
             List<String> formattedCombinations = new ArrayList<>();
