@@ -253,51 +253,37 @@ public class MainActivity extends Activity implements OnClickListener {
     }
 
 
-    private void analyzeLotteryData() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                File directory = null;
-                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
-                    directory = new File(Environment.getExternalStoragePublicDirectory(
-                            Environment.DIRECTORY_DOCUMENTS), "双色球");
-                }
-                File file = new File(directory, "分析双色球.txt");
-
-                if (file.exists()) {
-                    try {
-                        historicalData = SSQAnalyzer.readRecentHistoricalData(file.getAbsolutePath(), 12);
-                        List<String> ballStr = SSQAnalyzer.getBall(historicalData, 1);
-
-                        StringBuilder result = new StringBuilder();
-                        for (int i = 0; i < ballStr.size(); i++) {
-                            result.append("双色球 \n\n").append(ballStr.get(i)).append("\n\n\n");
-                        }
-
-                        runOnUiThread(() -> resultTextView.setText(result.toString()));
-                        copyContent = result.toString();
-                        copySelect();
-
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                resultTextView.setText("数据读取失败，请检查文件");
-                            }
-                        });
-                    }
-                } else {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            resultTextView.setText("文件不存在，请先获取数据");
-                        }
-                    });
-                }
-            }
-        }).start();
+private void analyzeLotteryData() {
+    File directory = null;
+    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
+        directory = new File(Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_DOCUMENTS), "双色球");
     }
+    File file = new File(directory, "分析双色球.txt");
+
+    if (file.exists()) {
+        SSQAnalyzer.analyzeAndGenerate(this, file.getAbsolutePath(), 1, new SSQAnalyzer.AnalysisCallback() {
+            @Override
+            public void onSuccess(List<String> result) {
+                StringBuilder sb = new StringBuilder();
+                for (String s : result) {
+                    sb.append("双色球 \n\n").append(s).append("\n\n\n");
+                }
+                resultTextView.setText(sb.toString());
+                copyContent = sb.toString();
+                copySelect();
+            }
+
+            @Override
+            public void onError(String error) {
+                resultTextView.setText("分析失败: " + error);
+            }
+        });
+    } else {
+        resultTextView.setText("文件不存在，请先获取数据");
+    }
+}
+
 
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
