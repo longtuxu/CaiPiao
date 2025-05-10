@@ -19,73 +19,87 @@ import java.util.Set;
 
 public class PastePrizeClaimSuperLottoData {
 
-    int topFiveElementsSameCount = 0;
-    int lastTwoElementsSameCount = 0;
-
     public void pastePrizeClaimTwoToneData(Context context, String editedText) {
-        //从开奖网站获取数据，比对中奖情况
-        new Thread(new Runnable() {
-            Set<Integer> fileSet;
+        new Thread(() -> {
+            try {
+                Document doc = Jsoup.connect("https://kaijiang.500.com/dlt.shtml").get();
+                Elements balls = doc.select("div.ball_box01 li.ball_red, div.ball_box01 li.ball_blue");
 
-            @Override
-            public void run() {
-                try {
-                    // 使用Jsoup连接到指定的网址并获取页面内容
-                    Document doc = Jsoup.connect("https://kaijiang.500.com/dlt.shtml").get();
-
-                    // 选择页面中彩票结果的元素，并打印出来
-                    Elements lotteryResults = doc.select("div.ball_box01");
-                    String lotteryResultsStr = lotteryResults.text();
-                    Set<Integer> openSet = new LinkedHashSet<>();
-                    fileSet = new LinkedHashSet<>();
-
-                    // 构建数字集合
-                    for (String numStr : lotteryResultsStr.split(" ")) {
-                        openSet.add(Integer.parseInt(numStr)); // 开奖数据用空格截取后添加到openList数组中
+                // 解析开奖号码（自动补零处理）
+                List<Integer> openFront = new ArrayList<>();
+                List<Integer> openBack = new ArrayList<>();
+                for (int i = 0; i < balls.size(); i++) {
+                    String num = balls.get(i).text();
+                    int parsedNum = Integer.parseInt(num);
+                    if (i < 5) {
+                        openFront.add(parsedNum);
+                    } else {
+                        openBack.add(parsedNum);
                     }
-                    for (String numStr : editedText.split("[、+\\s]")) {
-                        fileSet.add(Integer.parseInt(numStr)); // 文件数据用“、”截取后添加到fileStrList中
-                    }
-
-                    List<Integer> openSetFirstSix = new ArrayList<>(openSet).subList(0, Math.min(openSet.size(), 5));
-                    List<Integer> fileSetFirstSix = new ArrayList<>(fileSet).subList(0, Math.min(fileSet.size(), 5));
-
-                    for (Integer openNum : openSetFirstSix) {
-                        for (Integer fileNum : fileSetFirstSix) {
-                            if (openNum.equals(fileNum)) {
-                                topFiveElementsSameCount++;
-                                break; // 遇到相同的元素后，跳过当前外层循环的剩余部分
-                            }
-                        }
-                    }
-                    List<Integer> openSetTopFive = new ArrayList<>(openSet).subList(openSet.size() - 2, openSet.size());
-                    List<Integer> fileSetTopFive = new ArrayList<>(fileSet).subList(fileSet.size() - 2, fileSet.size());
-
-                    for (Integer openNum : openSetTopFive) {
-                        for (Integer fileNum : fileSetTopFive) {
-                            if (openNum.equals(fileNum)) {
-                                lastTwoElementsSameCount++;
-                                break; // 遇到相同的元素后，跳过当前外层循环的剩余部分
-                            }
-                        }
-                    }
-
-                    new Handler(Looper.getMainLooper()).post(new Runnable() {
-                        @Override
-                        public void run() {
-                            // 更新UI上的数据
-                            SuperLottoPrize superLottoPrize = new SuperLottoPrize();
-                            String prize = superLottoPrize.checkPrizeLevel(topFiveElementsSameCount, lastTwoElementsSameCount);
-                            CustomToast.show(context, topFiveElementsSameCount + " + " + lastTwoElementsSameCount + "  " + prize, 800);
-                        }
-                    });
-
-                } catch (IOException e) {
-                    // 捕获和处理IO异常
-                    e.printStackTrace();
                 }
+
+                // 解析用户输入（兼容3、03、+前后空格等格式）
+                String[] parts = editedText.split("\\+");
+                if (parts.length != 2) {
+                    showError(context, "格式错误：必须包含+分隔符");
+                    return;
+                }
+
+                List<Integer> userFront = parseNumbers(parts[0]);
+                List<Integer> userBack = parseNumbers(parts[1]);
+
+                // 格式验证
+                if (userFront.size() != 5 || userBack.size() != 2) {
+                    showError(context, "号码数量错误：\n前区需5个，后区需2个");
+                    return;
+                }
+
+                // 计算匹配数
+                int frontMatch = countMatches(userFront, openFront);
+                int backMatch = countMatches(userBack, openBack);
+
+                // 显示结果
+                new Handler(Looper.getMainLooper()).post(() -> {
+                    String prize = new SuperLottoPrize().checkPrizeLevel(frontMatch, backMatch);
+                    CustomToast.show(context,
+                            String.format("前区中%d个 后区中%d个\n%s",
+                            frontMatch, backMatch, prize),
+                            1500);
+                });
+
+            } catch (Exception e) {
+                showError(context, "数据获取失败：" + e.getMessage());
             }
         }).start();
     }
+
+    private List<Integer> parseNumbers(String input) {
+        List<Integer> numbers = new ArrayList<>();
+        String[] rawNumbers = input.trim().split("[、\\s,，]+"); // 兼容所有分隔符
+        for (String numStr : rawNumbers) {
+            try {
+                numbers.add(Integer.parseInt(numStr.replaceAll("[^0-9]", "")));
+            } catch (NumberFormatException e) {
+                // 忽略非法字符
+            }
+        }
+        return numbers;
+    }
+
+    private int countMatches(List<Integer> user, List<Integer> official) {
+        int count = 0;
+        for (Integer num : user) {
+            if (official.contains(num)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    private void showError(Context context, String message) {
+        new Handler(Looper.getMainLooper()).post(() ->
+            CustomToast.show(context, message, 1500));
+    }
 }
+
 

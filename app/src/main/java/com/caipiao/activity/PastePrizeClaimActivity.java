@@ -100,22 +100,22 @@ public class PastePrizeClaimActivity extends Activity {
      * @param text 包含多行文本的字符串
      * @return 只包含以数字开头的行的列表
      */
-    public static List<String> extractNumberLines(String text) {
-        List<String> numberLines = new ArrayList<>();
-        String[] lines = text.split("\\n"); // 假设文本是以换行符分隔的多行
+// 修改 extractNumberLines 方法
+public static List<String> extractNumberLines(String text) {
+    List<String> numberLines = new ArrayList<>();
+    String[] lines = text.split("\\n");
 
-        // 创建Pattern对象，匹配数字开头但不包含中文的行
-        Pattern pattern = Pattern.compile("^\\d+(?!.*\\p{IsHan})");
+    // 新正则表达式：支持带+号的号码行
+    Pattern pattern = Pattern.compile("^(\\d+[、\\s+])+\\d+$");
 
-        for (String line : lines) {
-            Matcher matcher = pattern.matcher(line.trim()); // 去除前后空白再匹配
-            if (matcher.find()) {
-                numberLines.add(line.trim()); // 添加匹配到的行，这里trim()是为了去除行首行尾的空白字符
-            }
+    for (String line : lines) {
+        if (pattern.matcher(line.replaceAll("[^0-9、+\\s]", "")).find()) {
+            numberLines.add(line.trim().replaceAll("，", ",")); // 统一中文逗号
         }
-
-        return numberLines;
     }
+    return numberLines;
+}
+
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
