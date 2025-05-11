@@ -391,10 +391,10 @@ private void analyzeLotteryData() {
         // 使用switch-case结构替换if-else，使代码更清晰
         switch (newNumber) {
             case 0:
-                linearLayout.setBackgroundResource(R.drawable.background1);
+//                linearLayout.setBackgroundResource(R.drawable.background1);
                 break;
             case 1:
-                linearLayout.setBackgroundResource(R.drawable.background2);
+//                linearLayout.setBackgroundResource(R.drawable.background2);
                 break;
             default:
                 // 这里通常不会执行，但作为一个良好的编程习惯，处理意外情况
